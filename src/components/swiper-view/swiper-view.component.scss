@@ -1,0 +1,89 @@
+swiper-view {
+  .slide-box {
+    height: 130px;
+    position: relative;
+    .swiper-container {
+      width: 100%;
+      height: 150px;
+      margin: 0px auto;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: transparent;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.35;
+      img {
+        width: 110px;
+        height: 110px;
+        position: absolute;
+        border: 4px solid #fff;
+        top: 10px;
+        left: 10px;
+        border: 1px solid gray;
+      }
+      p {
+        position: absolute;
+        bottom: 0;
+        margin: 0px auto;
+        width: 100%;
+      }
+      button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: none;
+        box-shadow: none;
+        position: absolute;
+        ion-icon {
+          color: #EE6464;
+        }
+      }
+      .share {
+        top: 5px;
+        left: 8px;
+      }
+      .locate {
+        bottom: 8px;
+        left: 8px;
+      }
+      .star {
+        right: 30px;
+        top: 5px;
+      }
+    }
+    .swiper-slide-active {
+      opacity: 1;
+      display: block;
+      img {
+        width: 150px;
+        height: 150px;
+        top: 0px;
+      }
+      .share {
+        top: 0;
+        left: 8px;
+      }
+      .locate {
+        bottom: 2px;
+        left: 8px;
+      }
+      .star {
+        right: -8px;
+        top: 0;
+      }
+    }
+    .swiper-slide-next {
+      display: block;
+    }
+    .swiper-slide-prev {
+      display: block;
+    }
+    .swiper-scrollbar {
+      opacity: 0 !important;
+    }
+  }
+}

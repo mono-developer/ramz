@@ -1,0 +1,50 @@
+<ion-header no-border *ngIf="companyInfo">
+  <ion-navbar transparent>
+    <ion-buttons right style="display: block;">
+      <button ion-button icon-only (click)="dismiss()" style="color: #9C9C9C;" class="back-button-icon" color="dark">
+        <ion-icon style="zoom:1.3;" name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<!-- <ion-content padding> -->
+
+<ion-grid [style.height]="height">
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" style="height: 100%;">
+    <ion-row style="height: 15%;" *ngIf="companyInfo">
+
+    </ion-row>
+    <ion-row style="height: 15%;" *ngIf="!companyInfo">
+      <ion-col col-6>
+        <button detail-none ion-button block outline type="button" icon-left (click)="onLocate()">
+          <ion-icon name="locate"></ion-icon>
+          {{'Locate me'|translate}}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button detail-none ion-button block outline type="button" icon-left (click)="onOpenMap()">
+          <ion-icon name="map"></ion-icon>
+          {{'Select on Map'|translate}}
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="height: 85%;">
+      <ion-col style="height: 100%;" col-12>
+        <agm-map style="height: 100%;" [latitude]="location.lat" [longitude]="location.lng" [zoom]="12">
+          <agm-marker [latitude]="location.lat" [longitude]="location.lng"></agm-marker>
+        </agm-map>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-grid>
+
+
+<ion-footer *ngIf="!companyInfo">
+  <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+    <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+      color="dark" type="submit" (click)="f.ngSubmit.emit()" [disabled]="!f.valid || !locationIsSet">{{'Save and finish'|translate}}</button>
+  </ion-toolbar>
+</ion-footer>

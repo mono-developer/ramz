@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      {{product.ItemTitle | translate}}
+    </ion-title>
+    <ion-buttons>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="page-product-detail">
+  <ion-grid class="product-detail-title" style="height: 40%;">
+    <ion-row justify-content-center align-items-center>
+
+      <ion-col col-2 *ngIf="!isVideo"></ion-col>
+      <ion-col col-8 *ngIf="!isVideo">
+        <ion-slides pager="false" style="width: 66%;margin-left:auto;margin-right: auto">
+          <ion-slide *ngIf="product!=null">
+            <div class="image">
+              <img src="{{config.companyImageURL+product.ItemPath}}" imageViewer>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+      <ion-col col-10 [hidden]="!(shared.isCompany==true&&isVideo==true)">
+        <video #videoPlayer class="video-player" src="{{ config.companyImageURL + product.ItemPath}}" width="100%" style="background:transparent no-repeat;background-size:100%"
+          controls controlsList="nodownload"></video>
+      </ion-col>
+      <ion-col col-10 [hidden]="!(shared.isCompany!=true&&isVideo==true)">
+        <video #videoPlayer class="video-player" src="{{ config.companyImageURL + product.ItemPath}}" width="100%" style="background:transparent no-repeat;background-size:100%"
+          controls controlsList="nodownload"></video>
+      </ion-col>
+      <ion-col col-2 style="text-align: center;height: 100%;">
+
+        <ion-grid no-lines inset style="height: 100%;" float-right>
+
+          <ion-row>
+            <ion-col>
+              <ion-icon style="zoom:1.7;" *ngIf="product.favorite==true" [name]="'heart'" (click)="fav(product)" color="heart"></ion-icon>
+              <ion-icon style="zoom:1.7;" *ngIf="product.favorite==false" [name]="'heart-outline'" color="heart" (click)="fav(product)"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="shared.isCompany&&(shared.customerData.customers_id==product?.CompanyId)">
+            <ion-col>
+              <ion-icon style="zoom:1.7;" ios="ios-trash" md="ios-trash" (click)="deleteProduct(product)" color="heart"></ion-icon>
+
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="shared.isCompany&&(shared.customerData.customers_id==product?.CompanyId)">
+            <ion-col>
+              <ion-icon style="zoom:1.7;" ios="ios-create-outline" md="ios-create-outline" (click)="editProduct(product)" color="heart"></ion-icon>
+
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!shared.isCompany">
+            <ion-col>
+              <svg-icon src="assets/whats.svg" (click)="whatsShare()"></svg-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!shared.isCompany">
+            <ion-col>
+              <button ion-button class="request_btn" (click)="openRequestPage()"></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="product-detail-title">
+    <ion-row class="rowStyle">
+      <ion-col col-12>
+
+
+        <ion-item col-12>
+          <h3 text-wrap>{{product.ItemTitle}}
+            <br>
+
+          </h3>
+          <small class="text-center">{{product.ItemDescription}}</small>
+          <h3 text-wrap>{{'Price: '|translate}}
+
+            <small>{{product.Price}}
+              <span style="color:red"> {{'OMR'|translate}}</span>
+            </small>
+          </h3>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-list [virtualScroll]="comments">
+
+    <ion-item *virtualItem=" let obj">
+      <ion-avatar item-start>
+        <img src="{{obj.Photo}}" imageViewer />
+      </ion-avatar>
+      <h2 text-wrap>{{obj.UserName}}
+        <br>
+        <small>{{obj.Comment}}</small>
+      </h2>
+
+
+
+      <p text-wrap>{{obj.CreatedAt}}</p>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer no-padding>
+
+
+  <ion-grid no-padding>
+    <ion-row style="padding-bottom:5px ;">
+      <ion-col col-9 start>
+        <ion-input type="text" placeholder="{{'Write your comment'|translate}}" [(ngModel)]="commentdata"></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <button detail-none ion-button full [disabled]="commentdata==null || commentdata==undefined || commentdata=='' " style=" color: #f50404;height: 100%;"
+          color="light" (click)="saveComment()">{{'send'|translate}}</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-footer>

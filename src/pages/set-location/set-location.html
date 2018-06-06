@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{'Choose Location'|translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid style="height: 100%;">
+    <ion-row style="height: 15%;">
+      <ion-col col-12>
+        <div class="form-group" style="width:100%">
+          <input placeholder="{{'Search for location'|translate}}" style="width:100%" autocorrect="off" autocapitalize="off" spellcheck="off"
+            type="text" class="form-control" #search [formControl]="searchControl">
+        </div>
+      </ion-col>
+
+    </ion-row>
+    <ion-row style="height: 70%;">
+      <agm-map #AgmMap style="height: 100%;width: 100%" [zoom]="zoom" [scrollwheel]="false" [longitude]="location.lng" [latitude]="location.lat"
+        (mapClick)="onSetMarker($event)">
+        <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" *ngIf="marker"></agm-marker>
+      </agm-map>
+
+    </ion-row>
+    <ion-row style="height: 15%;">
+      <ion-col>
+        <button detail-none ion-button block color="secondary" (click)="onConfirm()" [disabled]="!marker">{{'Confirm'|translate}}</button>
+      </ion-col>
+      <ion-col>
+        <button detail-none ion-button block color="danger" (click)="onAbort()">{{'Abort'|translate}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

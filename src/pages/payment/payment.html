@@ -1,0 +1,203 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button detail-none *ngIf="shared.isActive" ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      <div class="categories-title">{{'Payment'|translate}}</div>
+    </ion-title>
+    <ion-buttons end>
+      <button detail-none *ngIf="shared.isActive" ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="payment" padding scroll="false">
+  <br/>
+  <ion-item>
+    <h2 style="color:#C5C5C5;font-weight: bold">{{'PAYMENT METHOD'|translate}}</h2>
+    <br/>
+    <div *ngIf="config.langName != 'ar'">
+      <ion-segment mode="ios" [(ngModel)]="profileSelected">
+        <ion-segment-button value="credit" (ionChange)="segmentChanged()" style="border-radius: 90px 0px 0px 90px;">
+          {{'Credit Card'|translate}}
+        </ion-segment-button>
+        <ion-segment-button value="photo" (ionChange)="segmentChanged()" style="padding-left:7px;padding-right:7px;">
+          {{'Western Union'|translate}}
+        </ion-segment-button>
+        <ion-segment-button value="interests" (ionChange)="segmentChanged()" style="border-radius: 0px 90px 90px 0px;">
+          {{'Paypal'|translate}}
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    <div *ngIf="config.langName == 'ar'">
+      <ion-segment mode="ios" [(ngModel)]="profileSelected">
+        <ion-segment-button value="credit" (ionChange)="segmentChanged()" style="border-radius: 0px 90px 90px 0px;">
+          {{'Credit Card'|translate}}
+        </ion-segment-button>
+        <ion-segment-button value="photo" (ionChange)="segmentChanged()" style="padding-left:7px;padding-right:7px;">
+          {{'Western Union'|translate}}
+        </ion-segment-button>
+        <ion-segment-button value="interests" (ionChange)="segmentChanged()" style="border-radius: 90px 0px 0px 90px;">
+          {{'Paypal'|translate}}
+        </ion-segment-button>
+      </ion-segment>
+
+    </div>
+  </ion-item>
+  <div [ngSwitch]="profileSelected">
+
+
+    <ion-list *ngSwitchCase="'credit'">
+
+      <form #userForm="ngForm" (ngSubmit)="updateInfo()">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col width-100 col-12 col-sm>
+              <ion-item>
+                <ion-label color="dark" stacked>{{'Card Holder Name'|translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="creditCard.cardHolderName" name="cardHolderName" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-100 col-12 col-sm>
+              <ion-item>
+                <ion-label color="dark" stacked>{{'Card Number'|translate}}</ion-label>
+                <ion-input type="number" maxlength="16" minlength="2" [(ngModel)]="creditCard.number" name="creditCard" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" stacked>{{'Expiry Date'|translate}}</ion-label>
+                <!-- <ion-input type="date" maxlength="7" [(ngModel)]="creditCard.date" name="date" required value="{{ creditCard.date | date: 'MM/yyyy'}}"></ion-input> -->
+                <ion-datetime displayFormat="MM/YYYY" pickerFormat="MM YYYY" [(ngModel)]="creditCard.date" name="date" required></ion-datetime>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" stacked>{{'CVV'|translate}}</ion-label>
+                <ion-input type="number" maxlength="3" minlength="3" name="cvv" [(ngModel)]="creditCard.cvv" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-col col-6>
+              {{'TOTAL'|translate}}
+            </ion-col>
+            <ion-col col-6 text-right>
+              {{parent.SubscriptionPrice}} {{' OMR' |translate}}
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col col-3></ion-col>
+            <ion-col col-6>
+              <ion-list>
+                <ion-row>
+                  <ion-col col-4>
+                    <img anima-src="assets/img/Visa-dark.svg" class="cloudupload" src="assets/img/Visa-dark.svg" />
+                  </ion-col>
+                  <ion-col col-4>
+                    <img anima-src="assets/img/MasterCard-dark.svg" class="cloudupload" src="assets/img/MasterCard-dark.svg" />
+                  </ion-col>
+                  <ion-col col-4>
+                    <img anima-src="assets/img/Maestro-dark.svg" class="cloudupload" src="assets/img/Maestro-dark.svg" />
+                  </ion-col>
+                </ion-row>
+              </ion-list>
+            </ion-col>
+            <ion-col col-3></ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+      </form>
+
+      <ion-footer *ngIf="isKeyboardHide">
+        <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+          <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+            color="dark" type="submit" [disabled]="!userForm.form.valid" (click)="userForm.ngSubmit.emit()">{{'Save and continue'|translate}}</button>
+
+        </ion-toolbar>
+      </ion-footer>
+    </ion-list>
+    <ion-list *ngSwitchCase="'photo'">
+      <form #userPhotoForm="ngForm" (ngSubmit)="uploadPhoto(tempPhoto)">
+        <ion-row text-center>
+          <ion-col center>
+            <ion-label color="dark" text-wrap>
+              {{'Please note verification process it takes 1 to 2 days, after checking up an'|translate}} {{'email will be sent to you
+              as well as for sucessfull confirmation payment'|translate}} {{'as well as your account will be activated.'|translate}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col center text-center>
+            <ion-note>
+              {{'PLEASE UPLOAD WESTERN UNION RECEIPT'|translate}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-3></ion-col>
+          <ion-col col-6>
+            <div class="photo">
+              <div class="image">
+                <img src="{{profilePicture}}" (click)='selectPhoto()' />
+              </div>
+            </div>
+          </ion-col>
+          <ion-col col-3></ion-col>
+        </ion-row>
+      </form>
+      <ion-footer>
+        <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+          <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+            color="dark" type="submit" [disabled]="!userPhotoForm.form.valid  || tempPhoto==null" (click)="userPhotoForm.ngSubmit.emit()">{{'Save and continue'|translate}}</button>
+
+        </ion-toolbar>
+      </ion-footer>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'interests'">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            {{'Package Name'|translate}}
+          </ion-col>
+          <ion-col col-6 text-right>
+            {{parent.PackageName}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            {{'TOTAL'|translate}}
+          </ion-col>
+          <ion-col col-6 text-right>
+            {{parent.SubscriptionPrice}} {{' OMR' |translate}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-footer>
+        <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+          <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+            color="dark" type="button" (click)="makePayment()">{{'Save and continue'|translate}}</button>
+
+        </ion-toolbar>
+      </ion-footer>
+
+    </ion-list>
+  </div>
+
+</ion-content>

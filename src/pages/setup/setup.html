@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      {{'Settings'| translate }}
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button detail-none  ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="grid-t" style="margin-top:25px; margin-bottom: 25px;">
+    <ion-col>
+      <p text-wrap>{{'GENERAL SETTINGS'| translate }}</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid lines>
+    <ion-row>
+
+      <ion-col col-12>
+        <ion-list class="inline-block" radio-group [(ngModel)]="selectedLanguage">
+
+          <ion-item-divider col-5>
+            <ion-icon name="globe" item-left></ion-icon>
+            <ion-label color="dark" fixed> {{'Language'| translate }}</ion-label>
+          </ion-item-divider>
+          <ion-item-divider *ngFor="let l of languages" item-right>
+            <ion-radio [value]="l"></ion-radio>
+            <ion-label color="dark">{{l.name| translate}}</ion-label>
+          </ion-item-divider>
+
+        </ion-list>
+
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-list>
+          <ion-item-divider>
+            <ion-icon name="notifications" item-left></ion-icon>
+            <ion-label color="dark">{{'Notification'| translate }}</ion-label>
+            <ion-toggle [(ngModel)]="setting.notification"></ion-toggle>
+          </ion-item-divider>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+
+
+  <ion-list *ngIf="shared.customerData.customers_id!=null" padding>
+    <ion-row>
+      <ion-col col-12>
+        <button detail-none ion-button block outline small style="border-color: rgba(238, 100, 100, 1.0) !important; color: rgba(238, 100,
+        100, 1.0)!important;width:100%; padding:20px; background-color: transparent;" color="secondary" (click)="logOut()">
+          {{'Log Out' | translate }}
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+
+        <ion-label color="dark" (click)="openPrivacyPolicyPage()" style="text-align: center;font-size: 11pt;text-decoration-line: underline;color: blue">{{'Read Terms & Conditions' | translate}}
+        </ion-label>
+
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+    <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+      color="dark" (click)="updateSetup()">{{'Save and continue'|translate}}</button>
+  </ion-toolbar>
+</ion-footer>

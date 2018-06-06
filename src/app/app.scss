@@ -1,0 +1,401 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.svg {
+  mask-size: contain; // mask-position: 50% 50%;
+  mask-repeat: no-repeat top left;
+  background-size: contain; // background: currentColor;
+  // transform: translate(100px, 100px);
+  width: 0.6em;
+  height: 0.6em;
+}
+
+.button.button-md,
+.bar-button.bar-button-md {
+  .button-inner {
+    height: 110%;
+  }
+}
+
+.toolbar {
+  .bar-buttons {
+    .cart-button {
+      position: relative;
+      width: 42px;
+      top: 1px;
+      right: 1px;
+      overflow: visible !important;
+      .icon {
+        .badge {
+          background-color: color($colors, secondary-light);
+          position: absolute;
+          top: -3px;
+          right: -5px;
+        }
+      }
+    }
+  }
+  .toolbar-title {
+    img {
+      width: 150px;
+      margin-top: 6px;
+    }
+  }
+}
+
+.form {
+  .list {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    .item {
+      //background-color:$white;
+    }
+  }
+}
+
+.form-secondary {
+  @extend.form;
+  .list {
+    .item {
+      background-color: transparent;
+    }
+  }
+}
+
+.page-empty {
+  height: 100%;
+  .row {
+    height: 100%;
+    .icon {
+      color: darken(color($colors, light), 20%);
+      font-size: 80px;
+    }
+    h4 {
+      font-size: 17px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    h5 {
+      color: darken(color($colors, light), 40%);
+      font-size: 15px;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+//--------- side menu scss -----
+.side-menu {
+  background-color: color($colors, primary);
+  .list-avatar {
+    margin-bottom: 0;
+    .item:after {
+      content: ""; // background: url(../assets/icons_stripe.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: -1;
+    }
+    .item {
+      background-color: color($colors, primary);
+      height: 80px;
+      ion-avatar {
+        .icon {
+          color: color($colors, light);
+          font-size: 50px;
+          margin-top: -5px;
+        }
+      }
+      h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: $white;
+      }
+      p {
+        color: $white;
+        white-space: normal;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+      button {
+        //color:color($colors, light);
+      }
+    }
+  }
+  .list-menu {
+    background-color: rgba(238, 100, 100, 1);
+    overflow: hidden;
+    .item {
+      background-color: rgba(238, 100, 100, 1);
+    }
+  }
+  .animate-item {
+    animation: flipInX 0.75s;
+  }
+}
+
+.animation-in {
+  animation: fadeIn 1s;
+}
+
+.animation-out {
+  animation: fadeOut 1s;
+}
+
+html[dir="rtl"] {
+  .module {
+    .slides {
+      .swiper-slide:first-child {
+        margin-right: 10px;
+      }
+      .swiper-slide-last {
+        padding-top: 3% !important;
+      }
+    }
+  }
+  .range-md [range-right] {
+    margin: 0 0 0 12px !important;
+  }
+  .range-md [range-left] {
+    margin: 0 12px 0 0 !important;
+  }
+  .text-input,
+  .searchbar-input {
+    direction: rtl;
+  }
+  .product-detail-header [col-4] {
+    text-align: left !important;
+  }
+}
+
+ion-icon {
+  &[class*="ramz-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 0.5em;
+    height: 0.5em;
+  }
+  &[class*="q-"] {
+    // Instead of using the font-based icons
+    // We're applying SVG masks
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat; // background: currentColor;
+    width: 1em;
+    height: 1em;
+  } // custom icons
+  &[class*="ramz-company"] {
+    mask-image: url(../assets/img/company.svg);
+  }
+  &[class*="ramz-ramz"] {
+    mask-image: url(../assets/img/ramz.svg);
+    border-radius: 50%;
+  }
+  &[class*="ramz-edit"] {
+    mask-image: url(../assets/img/edit.svg);
+  }
+  &[class*="ramz-setting"] {
+    mask-image: url(../assets/img/setting.png);
+  }
+  &[class*="ramz-package"] {
+    mask-image: url(../assets/img/package.png);
+  }
+  &[class*="ramz-request"] {
+    mask-image: url(../assets/img/request.png);
+  }
+  &[class*="ramz-home"] {
+    mask-image: url(../assets/img/ramz.png);
+  }
+  &[class*="ramz-fav"] {
+    mask-image: url(../assets/img/star.png);
+  }
+  &[class*="ramz-mail"] {
+    mask-image: url(../assets/img/mail.png);
+  }
+  &[class*="ramz-notification"] {
+    mask-image: url(../assets/img/notification.png);
+  }
+  &[class*="ramz-commercial"] {
+    mask-image: url(../assets/img/commercial.svg);
+  }
+  &[class*="ramz-user"] {
+    mask-image: url(../assets/img/user.png);
+  }
+  &[class*="ramz-avatar"] {
+    mask-image: url(../assets/img/avatar.png);
+  }
+  &[class*="ramz-steps"] {
+    mask-image: url(../assets/steps.svg);
+  }
+  &[class*="ramz-heart"] {
+    mask-image: url(../assets/heart.svg);
+    color: #ea4f4f;
+  }
+  &[class*="ramz-qwqw"] {
+    mask-image: url(../assets/qwqw.svg);
+  }
+  &[class*="ramz-map"] {
+    mask-image: url(../assets/map.svg);
+  }
+  &[class*="ramz-whatsapp"] {
+    mask-image: url(../assets/whats.svg);
+  }
+  &[class*="ramz-phone"] {
+    mask-image: url(../assets/phone.svg);
+  }
+  &[class*="ramz-group"] {
+    margin-top: 5px;
+    mask-image: url(../assets/img/grouping.svg);
+  }
+  &[class*="ramz-home"] {
+    margin-top: 5px;
+    mask-image: url(../assets/img/home.svg);
+  }
+  &[class*="ramz-publish"] {
+    margin-top: 5px;
+    mask-image: url(../assets/img/publish.svg);
+  }
+  &[class*="ramz-request"] {
+    margin-top: 5px;
+    mask-image: url(../assets/img/request-user.svg);
+  }
+  &[class*="ramz-req"] {
+    mask-image: url(../assets/img/req.svg);
+  }
+  &[class*="ramz-pkg"] {
+    mask-image: url(../assets/img/pkg.svg);
+  }
+}
+
+.text-design {
+  margin: 0;
+  font-size: 19px;
+  color: rgba(255, 255, 255, 1);
+  text-align: justify;
+  line-height: 36px;
+}
+
+.item-inner {
+  border: none !important;
+}
+
+ion-toast.success .toast-wrapper {
+  background: color($colors, secondary);
+}
+
+ion-toast.error .toast-wrapper {
+  background: color($colors, danger);
+}
+
+.inline-block {
+  display: inline-flex;
+  width: 100%;
+}
+
+.footer-btn {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.svg-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 20%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.grayTxt {
+  color: #9b9b9b;
+}
+
+.svg-container2 {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 40%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.svg-container3 {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.swiper-pagination-bullet {
+  background: #ee6464;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #ee6464;
+}
+
+ul {
+  padding: 0px;
+  &.rating li {
+    //   padding: 5px 10px !important;
+    padding: 5px 1px !important;
+    background: none !important;
+    color: #ffc743;
+    ion-icon {
+      font-size: 17px;
+    }
+  }
+}
+
+.rowStyle {
+  border-bottom: 1px solid #c7c7c7;
+}
+
+span .txt p div {
+  font-family: "Cocon";
+}
+
+.alert-title {
+  text-align: center;
+}
+
+.alert-radio-label {
+  text-align: right;
+}

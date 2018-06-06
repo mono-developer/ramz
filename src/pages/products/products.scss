@@ -1,0 +1,143 @@
+page-products {
+    ion-content {
+        background-image: url('./assets/img/espreso.png');
+        background-size: cover;
+        background-position-x: 50%; //
+    }
+    .background-image {
+        background-size: cover;
+        background-position: center; // height: 50vw;
+    }
+    .main-content {
+        // padding: 20px;
+        background-color: #efebeb;
+        position: absolute;
+        width: 100%;
+    }
+    .grid {
+        display: inline-block;
+        [col-6] {
+            float: left;
+        }
+    }
+    ion-footer {
+        ion-buttons {
+            .bar-button-menutoggle {
+                display: inline-block;
+            }
+        }
+    }
+    #menu2 {
+        z-index: 100;
+        h3 {
+            padding-left: 15px;
+            padding-right: 15px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+    }
+    .ion-md-star-outline:before {
+        content: "\f384";
+        color: #fff;
+    }
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.card-master {
+    width: calc(100% - 0px);
+    border-radius: 0;
+    position: relative;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-top: 1px;
+    background-size: cover;
+    background-position-x: 50%;
+    margin: 0px !important;
+    ;
+    .custom-icon {
+        font-size: 2em;
+        color: white;
+    }
+    .categories-title {
+        position: absolute;
+        /*  // top: 36%; // width: 100%; */
+        font-size: 1.6em;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    .categories-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        color: #fff;
+    }
+    .padding-btn {
+        // padding: 16px;
+    }
+    img {
+        border-radius: 50%;
+    }
+    .image {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.card-master::before {
+    content: "";
+    background-color: $master;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+}
+
+ion-fab {
+    right: 15px;
+    bottom: 20px;
+    button {
+        width: 50px;
+        height: 50px;
+        background-image: url(../assets/request.png);
+        background-size: 100% 100%;
+        background-color: white;
+        border-radius: 50%;
+    }
+}
+
+ion-icon {
+    &[class*="ramz-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain; // mask-position: 50% 50%;
+        mask-repeat: no-repeat top left;
+        ;
+        background-size: contain; // background: currentColor;
+        width: 1em;
+        height: 1em;
+    } // custom icons
+    &[class*="ramz-request"] {
+        mask-image: url(../assets/request.svg);
+    }
+    &[class*="ramz-heart"] {
+        mask-image: url(../assets/heart.svg);
+    }
+    &[class*="ramz-whats"] {
+        mask-image: url(../assets/whats.svg);
+    }
+}

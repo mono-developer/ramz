@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      {{'Notifications'| translate }}
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button detail-none  ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let n of notifications" text-wrap class="borderBottom">
+      <h2 text-wrap>{{n.Message}}</h2>
+      <br/>
+      <!-- <p text-wrap  [ngClass]="{'secondary': true, 'danger': false }">{{n.CreatedAt}} </p> -->
+      <p text-wrap style="color:#C5C5C5;font-weight: bold">{{n.CreatedAt}} </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

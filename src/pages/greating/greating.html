@@ -1,0 +1,46 @@
+<ion-content class="page-greating" padding>
+  <!-- <ion-item>
+    <img item-end  class="image" src="assets/img/close.png" />
+  </ion-item> -->
+
+  <ion-list>
+    <ion-row class="grid-t">
+      <ion-col>
+        <div class="logo">
+          <img class="image" src="assets/img/after.png" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+      <ion-col center text-center>
+        <ion-item text-center text-wrap *ngIf="shared.customerData.customers_id!=null">
+          <p text-wrap style="color:#4E4E4E;font-size: 1.4em;font-weight: bold">{{"We're glad you're here," |translate}}</p>
+          <h2 style="color:#D0021B;font-size: 1.4em">{{shared.customerData.customers_firstname +"&nbsp;"+shared.customerData?.customers_lastname}}</h2>
+
+          <br/>
+
+
+        </ion-item>
+        <ion-item>
+          <p text-wrap *ngIf="shared.isCompany" style="color:#4E4E4E;font-size: 0.9em" text-wrap>{{'Please complete your company data in order to receive our top service.'|translate}}</p>
+          <p text-wrap *ngIf="!shared.isCompany" style="color:#4E4E4E;font-size: 0.9em" text-wrap>{{'Please complete your profile data in order to receive our top service & notifications.'|translate}}</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer style="margin-bottom: 20px;">
+  <ion-toolbar transparent>
+    <button detail-none ion-button block (click)="openPage()" style="border-color: rgba(238, 100, 100, 1.0) !important;
+                  width:85%;padding:20px;margin-left: auto;margin-right: auto;color:#4A4A4A;
+                 ;text-transform: none; background-color: transparent;" outline color="secondary">
+      <ion-label color="dark">{{ 'Confirm' | translate }}</ion-label>
+    </button>
+  </ion-toolbar>
+
+
+</ion-footer>

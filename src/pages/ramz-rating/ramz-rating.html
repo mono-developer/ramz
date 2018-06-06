@@ -1,0 +1,82 @@
+<ion-header no-border>
+    <!-- transparent -->
+    <ion-navbar align-title="center">
+        <button detail-none ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'Rating Ramz'|translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="page-my-account">
+    <br/>
+    <ion-item item-start>
+        <h3 style="font-weight: bold">{{'Average score'|translate}}</h3>
+
+    </ion-item>
+    <ion-item>
+        <span class="text"> {{data.rating}} </span>
+        <rating class="rate" [(ngModel)]="data.rating" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+            nullable="false" readOnly="true">
+        </rating>
+    </ion-item>
+
+    <ion-item>
+        <h1 item-start class="grayTxt">{{'RAMZ Feedback summary'|translate}}</h1>
+    </ion-item>
+
+
+    <ion-grid>
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Speed'|translate}}</ion-label>
+            <span class="text" item-end>({{data.speed}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.speed" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Service speed'|translate}}</ion-label>
+            <span class="text" item-end>({{data.service}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.service" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Privacy & Security'|translate}}</ion-label>
+            <span class="text" item-end>({{data.security}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.security" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Easy of use'|translate}}</ion-label>
+            <span class="text" item-end>({{data.easy}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.easy" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+        <ion-item col-12>
+            <ion-label color="dark" floating> {{'Comments'|translate}} </ion-label>
+            <ion-textarea type="text" name="comments" [(ngModel)]="data.comments" required rows="3" style="border: solid 1px #6e6c69;"></ion-textarea>
+
+        </ion-item>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+        <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+            color="dark" (click)="save()">{{'Save and continue'|translate}}</button>
+
+    </ion-toolbar>
+</ion-footer>

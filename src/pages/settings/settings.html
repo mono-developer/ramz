@@ -1,0 +1,109 @@
+<ion-header>
+
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      {{'Settings'| translate }}
+    </ion-title>
+
+    <ion-buttons end>
+      <button detail-none ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="page-settings">
+
+  <ion-list class="list-avatar" padding>
+    <ion-item text-center *ngIf="shared.customerData.customers_id==null" (click)="openLoginPage()">
+      <ion-avatar>
+        <ion-icon name="contact"></ion-icon>
+      </ion-avatar>
+    </ion-item>
+
+    <ion-item text-center *ngIf="shared.customerData.customers_id!=null">
+      <ion-avatar>
+        <img src="{{config.url+config.userUploads+shared.customerData.customers_picture}}">
+      </ion-avatar>
+      <button detail-none ion-button color="light" (click)="customerType=='company'?openPage('companyAccount'):openPage('myAccount')">
+        {{'Edit Profile' | translate }}
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list padding>
+    <ion-item>
+      <ion-label color="dark">{{"Turn on/off Local Notifications"|translate}}</ion-label>
+      <ion-toggle [(ngModel)]="setting.localNotification" (ionChange)="turnOnOffNotification()"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark">{{"Turn on/off Notifications"|translate}}</ion-label>
+      <ion-toggle [(ngModel)]="setting.notification" (ionChange)="onOffPushNotification()"></ion-toggle>
+    </ion-item>
+
+    <!-- <ion-item>
+       <ion-label color="dark" >{{"Show/Hide Add to cart button"|translate}}</ion-label> 
+      <ion-toggle [(ngModel)]="setting.cartButton" (ionChange)="hideShowCartButton()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+       <ion-label color="dark" >{{"Show Footer Menu"|translate}}</ion-label>
+      <ion-toggle [(ngModel)]="setting.footer" (ionChange)="hideShowFooterMenu()"></ion-toggle>
+    </ion-item> -->
+
+  </ion-list>
+
+
+  <ion-list padding>
+    <button detail-none ion-item (click)="showModal('language')">
+      {{"Change Language"|translate}}
+      <ion-icon showWhen="android" name="globe" item-end></ion-icon>
+    </button>
+
+    <button detail-none ion-item (click)="openSite()">
+      {{"Official Website"|translate}}
+      <ion-icon showWhen="android" ios="ios-arrow-forward" md="ios-arrow-forward" color="arrow" item-end></ion-icon>
+    </button>
+    <button detail-none ion-item (click)="showModal('privacyPolicy')">
+      {{"Privacy Policy"|translate}}
+      <ion-icon showWhen="android" ios="ios-arrow-forward" md="ios-arrow-forward" color="arrow" item-end></ion-icon>
+
+    </button>
+    <button detail-none ion-item (click)="showModal('refundPolicy')">
+      {{"Refund Policy"|translate}}
+      <ion-icon showWhen="android" ios="ios-arrow-forward" md="ios-arrow-forward" color="arrow" item-end></ion-icon>
+
+    </button>
+    <button detail-none ion-item (click)="showModal('termServices')">
+      {{"Term and Services"|translate}}
+      <ion-icon showWhen="android" ios="ios-arrow-forward" md="ios-arrow-forward" color="arrow" item-end></ion-icon>
+    </button>
+    <button detail-none ion-item (click)="rateUs()">
+      {{"Rate Us"|translate}}
+      <ion-icon showWhen="android" name="star-half" item-end></ion-icon>
+    </button>
+    <button detail-none ion-item (click)="share()">
+      {{"Share"|translate}}
+      <ion-icon showWhen="android" name="share" item-end></ion-icon>
+    </button>
+    <button detail-none ion-item *ngIf="config.admob == 1" (click)="showAd()">
+      {{"Show Interstitial Ad"|translate}}
+      <ion-icon showWhen="android" name="easel" item-end></ion-icon>
+    </button>
+  </ion-list>
+  <ion-list *ngIf="shared.customerData.customers_id!=null" padding>
+    <button detail-none ion-button block color="secondary" (click)="logOut()">
+      {{'Log Out' | translate }}
+    </button>
+  </ion-list>
+</ion-content>
+
+<ion-footer *ngIf="config.footerShowHide=='1'">
+  <footer></footer>
+</ion-footer>

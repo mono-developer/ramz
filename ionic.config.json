@@ -1,0 +1,9 @@
+{
+  "name": "Ramz",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [{ "path": "/ramzrest", "proxyUrl": "https://almumaiaz.com" }]
+}

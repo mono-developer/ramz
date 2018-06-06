@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      <div>{{'New Companies' | translate }}</div>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <p text-wrap>{{'Companies registered' | translate }}</p>
+  <ion-list>
+    <ion-row text-center>
+      <ion-col col-4 text-center class="color1">{{'This Week' | translate }}</ion-col>
+      <ion-col col-4 text-center class="color2">{{'This Month' | translate }}</ion-col>
+      <ion-col col-4 text-center class="color3">{{'This Year' | translate }}</ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col col-4 text-center class="txt-color">{{WeekAgo}}</ion-col>
+      <ion-col col-4 text-center class="txt-color">{{MonthAgo}}</ion-col>
+      <ion-col col-4 text-center class="txt-color">{{YearAgo}}</ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-list inset>
+    <ion-item *ngFor="let c of latest" (click)="openProducts(c)" class="animated flipInX" class="rowStyle">
+      <ion-avatar item-start>
+        <img src="{{config.companyImageURL+c.Logo}}">
+      </ion-avatar>
+
+      <h2 text-wrap>{{c.CompnayName}}</h2>
+      <p text-wrap style="word-wrap: break-word;white-space: pre-wrap">{{c.BusinesTitle}} </p>
+      <p text-wrap style="color: #EE6464" float-left>
+        <ion-icon name="eye"></ion-icon>
+        <span>{{c.TotalViewed}}</span>
+      </p>
+      <ion-icon ios="ios-arrow-forward" md="ios-arrow-forward" color="arrow" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

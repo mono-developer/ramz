@@ -1,0 +1,129 @@
+<ion-header no-border>
+  <!-- transparent -->
+  <ion-navbar align-title="center">
+    <ion-title>{{'Request'| translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="page-my-account" padding>
+
+  <ion-row justify-content-center align-items-center>
+    <ion-col col-8 *ngIf="!isVideo">
+      <ion-slides pager="false" style="margin-left:auto;margin-right: auto">
+        <ion-slide>
+          <div class="image">
+            <!-- <img src="{{config.companyImageURL+item.ItemPath}}" imageViewer> -->
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+    <ion-col col-10 *ngIf="isVideo">
+      <video #videoPlayer class="video-player" src="{{ config.companyImageURL + item.ItemPath}}" width="100%" style="background:transparent no-repeat;background-size:100%"
+        controls controlsList="nodownload"></video>
+    </ion-col>
+    <p class="t_des">{{data.title}}</p>
+    <p class="t_des">{{data.description}}</p>
+  </ion-row>
+
+  <form #userForm="ngForm">
+
+    <ion-grid>
+      <p text-wrap>{{'Price'| translate }}
+        <span>&#40;{{'optional' | translate }}&#41;</span>
+      </p>
+
+      <ion-row>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Price'|translate}} </ion-label>
+            <ion-input type="number" maxlength="8" readonly="readonly" [(ngModel)]="data.price" name="pricefrom"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-item class="rowStyle"></ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-60 col-7 col-sm>
+          <ion-label color="dark">{{'Quantity'|translate}}
+            <span>&#40;{{'optional' | translate }}&#41;</span>
+          </ion-label>
+          <ion-item>
+            <input type="button" value="-" (click)="minus()">
+            <input type="text" style="text-align: center;padding: 5px;" disabled size="5" [(ngModel)]="data.qty" name="count" [value]="count">
+            <input type="button" value="+" (click)="plus()">
+          </ion-item>
+        </ion-col>
+
+        <ion-col width-40 col-5 col-sm style="background-color: transparent;">
+          <p text-wrap>{{'Submission Date'| translate }}</p>
+          <ion-item col-12 (click)="showDateTimePicker()">
+            <ion-buttons detail-none>
+              {{date}}
+              <button detail-none icon-left block large style="background-color: #fff;">
+                <ion-icon detail-none style="zoom:1.8;" color="danger" ios="ios-calendar" md="ios-calendar">
+                </ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-item>
+        </ion-col>
+        <ion-item class="rowStyle"></ion-item>
+      </ion-row>
+
+      <p text-wrap>{{'Location'| translate }}</p>
+      <ion-row>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Governorate'|translate}}</ion-label>
+            <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="data.governorateid" name="customers_governorate"
+              (ionChange)="getCities(data.governorateid)" required>
+              <ion-option *ngFor="let governorate of governorates" [value]="governorate.GovernorateId">{{langId==1?governorate.GovernorateArabic:governorate.GovernorateEnglish}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'City'|translate}}</ion-label>
+            <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="data.cityid" name="customers_city"
+              required>
+              <ion-option *ngFor="let city of cities" [value]="city.CityId">{{langId==1?city.CityArabic:city.CityEnglish}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-item class="rowStyle"></ion-item>
+      </ion-row>
+
+      <p text-wrap>{{'Other Info'| translate }}</p>
+      <ion-row>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Mobile'|translate}}</ion-label>
+            <ion-input type="tel" maxlength="20" name="mobile" [(ngModel)]="data.mobile" required></ion-input>
+          </ion-item>
+        </ion-col>
+
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-50 col-12 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Additional Notes'|translate}}</ion-label>
+            <ion-textarea type="text" name="comments" [(ngModel)]="data.comments" required rows="2"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+    <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+      color="dark" (click)="save()" [disabled]="!userForm.valid">{{'Save and continue'|translate}}</button>
+
+
+  </ion-toolbar>
+</ion-footer>

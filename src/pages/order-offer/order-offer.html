@@ -1,0 +1,187 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      {{'Order offer'| translate }}
+    </ion-title>
+    <ion-buttons end>
+      <!-- <button detail-none  ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button> -->
+      <button detail-none *ngIf="customerType=='company'" ion-button icon-only (click)="replyoffer(order)">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="!customerType || customerType=='user'">
+    <ion-card *ngFor="let o of orderOffers">
+      <ion-card-header>
+        {{o.BusinesTitle|translate}}
+      </ion-card-header>
+      <ion-card-content>
+
+        <ion-avatar item-start>
+          <img src="{{config.companyImageURL+Logo.Photo}}">
+        </ion-avatar>
+
+        <h2 text-wrap>{{o.CompnayName}}</h2>
+
+        <p text-wrap>{{o.CreatedAt}}</p>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              {{'Price From'|translate}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{'Price To'|translate}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="danger">
+            <ion-col width-50 col-6 col-sm>
+              {{o.PriceFrom}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{o.PriceTo}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              {{'Delivery Day'|translate}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{'Delivery Month'|translate}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="danger">
+            <ion-col width-50 col-6 col-sm>
+              {{o.DeliveryDay}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{o.DeliveryMonth}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="danger">
+            <ion-col>
+              <h5 class="ws">{{o.CompanyComment}} </h5>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-list *ngIf="customerType=='company'">
+    <ion-card>
+      <ion-card-header>
+        {{order.Title}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-avatar item-start>
+          <img src="{{config.userImageURL+orderInfo.Photo}}">
+        </ion-avatar>
+
+        <h2 text-wrap>{{orderInfo.Name}}</h2>
+        <p text-wrap>{{orderInfo.MemberSince}}</p>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              {{'Price From'|translate}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{'Price To'|translate}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="danger">
+            <ion-col width-50 col-6 col-sm>
+              {{orderInfo.PriceFrom}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{orderInfo.PriceTo}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              {{'Delivery Day'|translate}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{'Delivery Month'|translate}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="danger">
+            <ion-col width-50 col-6 col-sm>
+              {{orderInfo.DeliveryDay}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{orderInfo.DeliveryMonth}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              {{'City'|translate}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{'Contact'|translate}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="danger">
+            <ion-col width-50 col-6 col-sm>
+              {{orderInfo.CityEnglish}}
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              {{orderInfo.Mobile}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="orderOffers.length>0">
+      <ion-card-header>
+        {{'Offer response'|translate}}
+      </ion-card-header>
+      <ion-card-content *ngFor="let o of orderOffers">
+        <h2 text-wrap>{{'PRICE'|translate}}</h2>
+        <ion-row>
+          <ion-col col-6>
+            {{'Price From'|translate}}
+          </ion-col>
+          <ion-col col-6 text-right>
+            {{'Price To'|translate}}
+          </ion-col>
+        </ion-row>
+        <ion-row class="danger">
+          <ion-col col-6>
+            {{o.PriceFrom}}
+          </ion-col>
+          <ion-col col-6 text-right>
+            {{o.PriceTo}}
+          </ion-col>
+        </ion-row>
+        <h2 text-wrap>{{'Delivery Date'|translate}}</h2>
+        <ion-row>
+          <ion-col col-6>
+            {{'Day'|translate}}
+          </ion-col>
+          <ion-col col-6 text-right>
+            {{'Month'|translate}}
+          </ion-col>
+        </ion-row>
+        <ion-row class="danger">
+          <ion-col col-6>
+            {{o.DeliveryDay}}
+          </ion-col>
+          <ion-col col-6 text-right>
+            {{o.DeliveryMonth}}
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer> </ion-footer>

@@ -1,0 +1,186 @@
+<ion-header>
+
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      {{'Profile'| translate }}
+    </ion-title>
+  </ion-navbar>
+  <div padding>
+    <ion-segment [(ngModel)]="profileSelected" color="primary">
+      <ion-segment-button value="data" (ionChange)="segmentChanged()">
+        {{'Data' |translate}}
+      </ion-segment-button>
+      <ion-segment-button value="photo" [disabled]="isNotData" (ionChange)="segmentChanged()">
+        {{'Photo' |translate}}
+      </ion-segment-button>
+      <ion-segment-button value="interests" [disabled]="isNotData || isNotPicture" (ionChange)="segmentChanged()">
+        {{'Interests' |translate}}
+      </ion-segment-button>
+    </ion-segment>
+
+  </div>
+</ion-header>
+
+<ion-content class="page-my-account" padding>
+  <div [ngSwitch]="profileSelected">
+    <ion-list *ngSwitchCase="'data'">
+      <p text-wrap class="tt_view">{{'Profile data' |translate}}</p>
+      <form #userForm="ngForm" (ngSubmit)="updateInfo()">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Governorate'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="myAccountData.customers_governorate"
+                  name="customers_governorate" (ionChange)="getCities(myAccountData.customers_governorate)" required>
+                  <ion-option *ngFor="let governorate of governorates" [selected]="governorate.GovernorateId === myAccountData.customers_governorate"
+                    [value]="governorate.GovernorateId">{{langId==1?governorate.GovernorateArabic:governorate.GovernorateEnglish}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'City'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="myAccountData.customers_city"
+                  name="customers_city" required>
+                  <ion-option *ngFor="let city of cities" [value]="city.CityId">{{langId==1?city.CityArabic:city.CityEnglish}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Gender'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="myAccountData.gender" name="gender"
+                  required>
+                  <!-- <ion-option [value]="">{{'Select'|translate}}</ion-option> -->
+                  <ion-option [value]="1">{{'Male'|translate}}</ion-option>
+                  <ion-option [value]="2">{{'Female'|translate}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Age'|translate}}</ion-label>
+                <ion-input type="number" maxlength="2" [(ngModel)]="myAccountData.customers_age" name="customers_age" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Mobile'|translate}}</ion-label>
+                <ion-input type="number" maxlength="8" name="customers_telephone" [(ngModel)]="myAccountData.customers_telephone" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Email'|translate}}</ion-label>
+                <ion-input type="email" email name="customers_email_address" [(ngModel)]="myAccountData.customers_email_address" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Name'|translate}}</ion-label>
+                <ion-input type="text" name="customers_firstname" [(ngModel)]="myAccountData.customers_firstname" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-footer *ngIf="isKeyboardHide">
+          <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+            <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+              color="dark" type="submit" [disabled]="!userForm.form.valid">{{'Save and continue'|translate}}</button>
+
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+
+    </ion-list>
+
+
+    <div>
+      <ion-list *ngSwitchCase="'photo'">
+        <form #userPhotoForm="ngForm" (ngSubmit)="uploadPhoto(tempPhoto)">
+
+
+          <p text-wrap class="tt_view">{{'Profile photo' |translate}}</p>
+          <ion-row>
+            <ion-col center text-center>
+              <ion-note>
+                {{'Take photo or upload' |translate}}
+              </ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <div class="photo">
+                <div class="image">
+                  <img class="avatar" src="{{profilePicture}}">
+                </div>
+                <div class="scan">
+                  <!-- <ion-icon name="create" (click)='openCamera()'></ion-icon> -->
+                  <ion-icon name="camera" (click)='takePhoto()'></ion-icon>
+                </div>
+                <div class="upload">
+                  <ion-icon name="image" (click)='selectPhoto()'></ion-icon>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-footer *ngIf="isKeyboardHide">
+            <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+              <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+                color="dark" type="submit" [disabled]="!userPhotoForm.form.valid  || tempPhoto==null">{{'Save and continue'|translate}}</button>
+
+            </ion-toolbar>
+          </ion-footer>
+        </form>
+
+      </ion-list>
+    </div>
+
+
+
+    <ion-list style="max-height: 70px;" *ngSwitchCase="'interests'">
+      <form #userInterestsForm="ngForm" (ngSubmit)="updateInterests()">
+
+        <p text-wrap class="tt_view">{{'Profile interests' |translate}}</p>
+        <ion-grid style="height: 60%;">
+          <ion-row style="height: 60%;">
+            <ion-col>
+              <ion-list>
+                <ion-item-divider *ngFor="let cat of shared.allCategories" style="padding: 5px;">
+                  <ion-label color="dark" item-start>{{langId==1?cat.CategoryArabic:cat.CategoryEnglish}}</ion-label>
+                  <ion-checkbox item-end (ionChange)="selectCategory(cat, $event)" [checked]="isCategorySelected(cat.CategoryId)"></ion-checkbox>
+                </ion-item-divider>
+
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+        <ion-footer>
+          <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+            <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+              color="dark" type="submit" [disabled]="!userInterestsForm.form.valid || customersInterests?.length==0">{{'Save and finish'|translate}}</button>
+
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+    </ion-list>
+
+  </div>
+
+</ion-content>

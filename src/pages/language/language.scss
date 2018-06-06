@@ -1,0 +1,34 @@
+page-language {
+    .page-language{
+        .grid-t{
+            margin-top: 10%;
+            .logo{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 25px;
+                overflow: hidden;
+                border-width: 2px;
+                border-style: solid;
+                border-color:color($colors, light); 
+                .image{
+                    
+                    display: block;
+             
+                }
+            }
+        }
+        .list{
+            .item{
+                padding-left: 0;
+                img{
+                    margin-right: 10px;
+                }
+            }
+        }
+
+    
+    }
+}

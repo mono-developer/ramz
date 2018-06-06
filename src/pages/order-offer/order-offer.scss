@@ -1,0 +1,38 @@
+page-order-offers {
+  ion-card{
+    display: inline;
+  }
+  ion-card-content{
+    border-bottom: solid 1px #c4c4d1; 
+  }
+  .borderBottom {
+    border-bottom: solid 1px #c4c4d1; 
+  }
+  
+  // ion-note {
+  //   font-size: 12px;
+  //   align-self: flex-start;
+  //   position: absolute;
+  //   right: 5px;
+  //   margin-top: 19px;
+  // }
+
+  ion-avatar {
+    align-self: flex-start;
+    margin-top: 15px;
+  }
+  
+  ion-thumbnail {
+    align-self: flex-start;
+    margin-top: 19px;
+  }
+
+  .ws {
+    white-space: pre-line;
+  }
+
+  .danger {
+    color: color($colors, danger);
+  }
+
+}

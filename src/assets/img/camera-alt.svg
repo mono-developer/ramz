@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="244px" height="244px" viewBox="0 0 244 244" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>camera-alt</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="122" cy="122" r="122"></circle>
+    </defs>
+    <g id="Western-union" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-253.000000, -770.000000)">
+        <g id="camera-alt" transform="translate(253.000000, 770.000000)">
+            <g>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#D8D8D8" xlink:href="#path-1"></use>
+                <g mask="url(#mask-2)" fill="#000000">
+                    <g transform="translate(87.000000, 91.000000)">
+                        <circle id="Oval" cx="35.7" cy="35.7" r="11.2"></circle>
+                        <path d="M24.5,0 L18.2,7 L7,7 C3.15,7 0,10.15 0,14 L0,56 C0,59.85 3.15,63 7,63 L63,63 C66.85,63 70,59.85 70,56 L70,14 C70,10.15 66.85,7 63,7 L51.8,7 L45.5,0 L24.5,0 L24.5,0 Z M35,52.5 C25.2,52.5 17.5,44.8 17.5,35 C17.5,25.2 25.2,17.5 35,17.5 C44.8,17.5 52.5,25.2 52.5,35 C52.5,44.8 44.8,52.5 35,52.5 L35,52.5 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

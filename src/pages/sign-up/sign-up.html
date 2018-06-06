@@ -1,0 +1,207 @@
+<ion-header no-border *ngIf="shared.isIOS">
+  <ion-navbar transparent>
+    <ion-buttons left style="display: block;">
+      <button ion-button icon-only (click)="viewCtrl.dismiss()" style="color:rgba(238, 100, 100, 1.0)  !important;" class="back-button-icon"
+        color="dark">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="page-sign-up" padding>
+  <!-- <ion-row>
+    <ion-col col-12>
+      <div class="photo">
+        <div class="image">
+          <img class="avatar" src="assets/avatar.png" *ngIf="image==null">
+          <img class="avatar" src="{{image}}" *ngIf="image!=null">
+        </div>
+        <div class="upload">
+          <ion-icon name="camera" (click)='openCamera()'></ion-icon>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row> -->
+
+  <form *ngIf="!customerType || customerType=='user'" #loginForm="ngForm" class="form" (ngSubmit)="signUp()">
+    <ion-row class="data">
+      <ion-col col-12>
+        <ion-list>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Name'|translate}}</ion-label>
+            <ion-input type="text" name="customers_firstname" [(ngModel)]="formData.customers_firstname" required></ion-input>
+          </ion-item>
+
+          <!-- <ion-item>
+            <ion-input type="text" placeholder="{{'Last Name'|translate}}" name="customers_lastname" [(ngModel)]="formData.customers_lastname"
+              required></ion-input>
+          </ion-item> -->
+          <ion-item>
+            <ion-label color="dark" floating>{{'Email'|translate}}</ion-label>
+            <ion-input type="email" email name="customers_email_address" [(ngModel)]="formData.customers_email_address" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="dark" floating>{{'Mobile'|translate}}</ion-label>
+            <ion-input type="number" maxlength="8" name="customers_telephone" [(ngModel)]="formData.customers_telephone" required></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Governorate'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="formData.customers_governorate"
+                  name="customers_governorate" (ionChange)="getCities(formData.customers_governorate)" required>
+                  <ion-option *ngFor="let governorate of governorates" [value]="governorate.GovernorateId">{{langId==1?governorate.GovernorateArabic:governorate.GovernorateEnglish}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'City'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="formData.customers_city"
+                  name="customers_city" required>
+                  <ion-option *ngFor="let city of cities" [value]="city.CityId">{{langId==1?city.CityArabic:city.CityEnglish}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Gender'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="formData.gender" name="gender"
+                  required>
+                  <!-- <ion-option [value]="">{{'Select'|translate}}</ion-option> -->
+                  <ion-option [value]="1">{{'Male'|translate}}</ion-option>
+                  <ion-option [value]="2">{{'Female'|translate}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Age'|translate}}</ion-label>
+                <ion-input type="number" maxlength="2" [(ngModel)]="formData.customers_age" name="customers_age" required></ion-input>
+              </ion-item>
+
+            </ion-col>
+
+          </ion-row>
+
+
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Password'|translate}}</ion-label>
+                <ion-input type="password" name="customers_password" [(ngModel)]="formData.customers_password" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Confirmed Password'|translate}}</ion-label>
+                <ion-input type="password" name="customers_confirmed_password" [(ngModel)]="formData.customers_confirmed_password" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col>
+        <p text-wrap >{{"Creating an account means you’re okay with our"|translate}}
+          <a (click)="openTermServicesPage()">{{'Term and Services'|translate}}</a>,
+          <a (click)="openPrivacyPolicyPage()">{{'Privacy Policy'|translate}}</a> {{'and'|translate}}
+          <a (click)="openRefundPolicyPage()">{{'Refund Policy'|translate}}</a>
+        </p>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col col-2>
+        <ion-item>
+          <ion-checkbox item-left [(ngModel)]="formData.customers_agree" name="formData.customers_agree"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col col-10>
+        <ion-item>
+          <ion-label color="dark" (click)="openPrivacyPolicyPage()" style="font-size: 11pt">{{'I agree to the Terms & Conditions' | translate}}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col col-12>
+        <button detail-none ion-button block outline small style="border-color: rgba(238, 100, 100, 1.0) !important;
+    color: rgba(238, 100, 100, 1.0)!important;width:100%; padding:20px;
+    background-color: transparent;" color="secondary" type="submit" [disabled]="!loginForm.form.valid || !formData.customers_agree || formData.customers_password!=formData.customers_confirmed_password">{{'Register'|translate}}</button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+
+  <form *ngIf="customerType=='company'" #companyLoginForm="ngForm" class="form" (ngSubmit)="companySignUp()">
+    <ion-row class="data">
+      <ion-col col-12>
+        <ion-list>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Company Name'|translate}}</ion-label>
+            <ion-input type="text" name="customers_firstname" [(ngModel)]="formData.customers_firstname" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="dark" floating>{{'Email'|translate}}</ion-label>
+            <ion-input type="email" email name="customers_email_address" [(ngModel)]="formData.customers_email_address" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="dark" floating>{{'Mobile'|translate}}</ion-label>
+            <ion-input type="number" maxlength="8" name="customers_telephone" [(ngModel)]="formData.customers_telephone" required></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Password'|translate}}</ion-label>
+                <ion-input type="password" name="customers_password" [(ngModel)]="formData.customers_password" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Confirmed Password'|translate}}</ion-label>
+                <ion-input type="password" name="customers_confirmed_password" [(ngModel)]="formData.customers_confirmed_password" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <ion-item>
+          <ion-checkbox item-left [(ngModel)]="formData.customers_agree" name="formData.customers_agree"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col col-10>
+        <ion-item>
+          <ion-label color="dark" (click)="openPrivacyPolicyPage()" style="font-size: 11pt">{{'I agree to the Terms & Conditions' | translate}}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <button detail-none ion-button block outline small style="border-color: rgba(238, 100, 100, 1.0) !important;
+    color: rgba(238, 100, 100, 1.0)!important;width:100%; padding:20px;
+    background-color: transparent;" color="secondary" type="submit" [disabled]="!companyLoginForm.form.valid || !formData.customers_agree || formData.customers_password!=formData.customers_confirmed_password">{{'Register'|translate}}</button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

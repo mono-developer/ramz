@@ -1,0 +1,72 @@
+page-sub-categories6 {
+  ion-footer {
+    border-top: solid 1px rgb(201, 201, 201);
+  }
+  .page-sub-categories6 {
+    .card:first-child {
+      // margin-top: 0;
+    }
+    .card {
+      width: calc(100% - 0px);
+      border-radius: 5%;
+      position: relative;
+      text-align: center;
+      margin-right: auto;
+      margin-left: auto;
+      // margin-top: 7px;
+      width: 95%;
+      // margin-bottom: 7px;
+      min-height: 175px;
+      max-height: 175px;
+      .avatar {
+        border-radius: 50%;
+        width: 200px;
+        // height:200px;;
+      }
+      .categories-title {
+        position: absolute;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: #fff;
+        // top: 25%;
+        text-transform: uppercase;
+      }
+
+      .txt {
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+
+      .txt1 {
+        font-size: 0.9em;
+        width: 100%;
+        color: #fff;
+      }
+    }
+    .card::before {
+      content: "";
+      background-color: $black;
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin-right: auto;
+      margin-left: auto;
+      width: 95%;
+      height: 100%;
+      width: 100%;
+      opacity: 0.31;
+    }
+
+    .image {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

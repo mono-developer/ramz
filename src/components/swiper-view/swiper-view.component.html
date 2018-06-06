@@ -1,0 +1,22 @@
+<div class="slide-box">
+
+  <swiper [config]="config" style="height: 100%;" class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let item of comC">
+        <img src="{{configURL}}{{item.ImagePath}}" alt="">
+        <!-- <p>{{item.ImagePath}}</p> -->
+        <button class="share" ion-button icon-only (click)="openSharePage(item)">
+          <ion-icon name="md-share"></ion-icon>
+        </button>
+        <button class="locate" ion-button icon-only (click)="openLocationPage(item)">>
+          <ion-icon name="md-pin"></ion-icon>
+        </button>
+        <button class="star" ion-button icon-only (click)="setFav(item)">>
+          <ion-icon *ngIf="item.favorite == true" name="star"></ion-icon>
+          <ion-icon *ngIf="item.favorite == false" name="md-star-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </swiper>
+</div>

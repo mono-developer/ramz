@@ -1,0 +1,82 @@
+<ion-header no-border>
+    <!-- transparent -->
+    <ion-navbar align-title="center">
+        <ion-title>{{'Rating'|translate}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content class="page-my-account">
+
+    <br/>
+    <ion-item item-start>
+        <h3 style="font-weight: bold">{{'Average score'|translate}}</h3>
+
+    </ion-item>
+    <ion-item>
+        <span class="text"> {{data.rating}} </span>
+        <rating class="rate" [(ngModel)]="data.rating" max="5" readOnly="true">
+        </rating>
+    </ion-item>
+    <ion-item class="rowStyle">
+        <div class="photo">
+            <div class="image">
+                <img class="avatar" src="{{config.companyImageURL+(companyInfo.Logo?companyInfo.Logo:companyInfo.ImagePath)}}">
+            </div>
+        </div>
+    </ion-item>
+
+    <ion-item>
+        <h1 item-start>{{companyInfo.CompnayName}}</h1>
+    </ion-item>
+
+
+    <ion-grid>
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Price'|translate}}</ion-label>
+            <span class="text" item-end>({{data.price}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.price" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Location'|translate}}</ion-label>
+            <span class="text" item-end>({{data.location}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.location" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Customer Service'|translate}}</ion-label>
+            <span class="text" item-end>({{data.service}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.service" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+
+        <ion-item col-12>
+
+            <ion-label color="dark" class="grayTxt" item-start text-wrap>{{'Quality service/product'|translate}}</ion-label>
+            <span class="text" item-end>({{data.quality}})</span>
+            <rating class="rate" (click)="changeRate()" [(ngModel)]="data.quality" style="padding:0px !important;margin:0px 0px !important"
+                item-end max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">
+            </rating>
+
+        </ion-item>
+
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+        <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+            color="dark" (click)="save()">{{'Save and continue'|translate}}</button>
+
+    </ion-toolbar>
+</ion-footer>

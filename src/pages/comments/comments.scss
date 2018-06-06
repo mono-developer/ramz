@@ -1,0 +1,35 @@
+page-comments {
+  
+  .borderBottom {
+    border-bottom: solid 1px #c4c4d1; 
+  }
+  
+  ion-note {
+    font-size: 12px;
+    align-self: flex-start;
+    position: absolute;
+    // margin-top: 21px;
+  }
+
+  .right {
+    right: 5px;
+  }
+
+  .left {
+    left: 5px;
+  }
+
+  ion-avatar {
+    align-self: flex-start;
+    margin-top: 21px;
+  }
+  
+  ion-thumbnail {
+    align-self: flex-start;
+    margin-top: 21px;
+  }
+
+  .ws {
+    white-space: pre-line;
+  }
+}

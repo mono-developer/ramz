@@ -1,0 +1,38 @@
+page-orders {
+    .danger {
+      color: color($colors, danger);
+    }
+
+    .secondary {
+      color: #64f087 ;
+    }
+    
+    .borderBottom {
+      border-bottom: 1px solid #C7C7C7;
+    }
+
+    .numberGreenCircle {
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      background: #64f087;
+      border: 2px solid #64f087;
+      color: #fff;
+      text-align: center;
+      font: 21px Arial, sans-serif;
+      align-self: flex-start;
+      margin-top: 15px;
+    }
+    .numberRedCircle {
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      background: #EE6464;
+      border: 2px solid #EE6464;
+      color: #fff;
+      text-align: center;
+      font: 21px Arial, sans-serif;
+      align-self: flex-start;
+      margin-top: 15px;
+    }
+}

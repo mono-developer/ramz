@@ -1,0 +1,3 @@
+interface CompanRespone{
+    Result: CompanyModel[];
+  }

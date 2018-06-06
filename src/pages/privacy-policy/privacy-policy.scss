@@ -1,0 +1,45 @@
+privacy-policy {
+  .sign-in {
+    ion-header::after {
+      background: transparent;
+      background-image: none;
+    }
+    .toolbar {
+      .toolbar-background {
+        background: transparent;
+      }
+    }
+
+    scroll-content {
+      margin-top: 5px !important;
+    }
+  }
+
+  [transparent-header-bg] {
+    .toolbar {
+      .toolbar-background {
+        background: none;
+        border: none;
+        margin: 0;
+      }
+      .toolbar-content {
+        ion-title {
+          .toolbar-title {
+            color: #000;
+          }
+        }
+      }
+    }
+    & + ion-content {
+      .fixed-content,
+      .scroll-content {
+        margin-top: 0 !important;
+      }
+    }
+  }
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+    color: #000;
+  }
+}

@@ -1,0 +1,29 @@
+<ion-header no-border *ngIf="shared.isIOS">
+  <ion-navbar transparent>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="page-intro" [ngStyle]="changeBackground()">
+
+  <ion-slides pager="true" dir="{{shared.dir}}" (ionSlideDidChange)="slideChanged()">
+    <ion-slide *ngFor="let slide of slides" padding></ion-slide>
+  </ion-slides>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1>
+      </ion-col>
+      <ion-col col-5>
+        <button detail-none style="border-color: rgba(238, 100, 100, 1.0) !important;
+              color: rgba(238, 100, 100, 1.0)!important;width:100%; padding:20px;
+              background-color: transparent;" ion-button outline small color="secondary" (click)="openSignUpPage()">{{ 'Sign Up' | translate }}</button>
+      </ion-col>
+      <ion-col col-5>
+        <button detail-none style="border-color: rgba(238, 100, 100, 1.0) !important;
+              color: rgba(238, 100, 100, 1.0)!important;width:100%;padding:20px;
+              background-color: transparent;" ion-button outline small color="secondary" (click)="openLoginPage()">{{ 'Login' | translate }}</button>
+      </ion-col>
+      <ion-col col-1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

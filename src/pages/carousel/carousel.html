@@ -1,0 +1,39 @@
+<!-- Generated template for the CarouselComponent component -->
+
+<div class="carousel-container">
+  <div class="carousel">
+    <div radio-group class="carousel-slide-item slide-item-{{i}}" *ngFor="let item of items; let i=index"
+         [style.background-color]="item.color"
+         [ngStyle]="{'transform': 'rotateY(-'+item.currentPlacement+'deg)  translateZ('+tz+'px)', '-webkit-transform': 'rotateY('+item.currentPlacement+'deg)  translateZ('+tz+'px)', '-ms-transform': 'rotateY('+item.currentPlacement+'deg)  translateZ('+tz+'px)',
+        '-o-transform': 'rotateY('+item.currentPlacement+'deg)  translateZ('+tz+'px)'}"
+         (swipeleft)="onSwipeLeft($event);"
+         (swiperight)="onSwipeRight($event);"
+            >
+
+        <!--
+      <img src="{{item.imgUrl}}"/>
+      <p text-wrap >{{item.description}}</p>
+      <ion-checkbox [(ngModel)]="item.isSelected" (click)="selectItem(item)" ></ion-checkbox>
+      -->
+
+        <!-- Version ion card -->
+
+        <ion-card (click)="selectItem(item)">
+
+            <ion-badge *ngIf="item.outstanding" item-end><ion-icon name="star-outline"></ion-icon></ion-badge>
+
+            <img src="{{item.imgUrl}}">
+
+            <ion-card-content>
+                <ion-card-title>
+                    {{item.title}}
+                    <p text-wrap ><ion-icon name="map"></ion-icon> {{item.country}}</p>
+                </ion-card-title>
+                <p text-wrap >{{item.description}}</p>
+            </ion-card-content>
+
+        </ion-card>
+
+    </div>
+  </div>
+</div>

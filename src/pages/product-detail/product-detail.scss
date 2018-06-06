@@ -1,0 +1,146 @@
+page-product-detail {
+    ion-slides {
+        ion-slide {
+            margin-top: 7px;
+            .image {
+                //   width: 100%;
+                height: 200px;
+                max-height: 200px; //   border-radius: 50%;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+    .product-new {
+        font-size: 13px;
+        color: $white;
+        background-color: color($colors, primary);
+        padding-left: 5px;
+        padding-right: 5px;
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        z-index: 9;
+        height: 18px;
+        line-height: 22px;
+    }
+    .product-off {
+        @extend.product-new;
+        background-color: lighten(color($colors, facebook), 20%);
+    }
+    .page-product-detail {
+        background-color: $white;
+        .product-detail-title {
+            position: relative;
+            margin-top: -4px;
+            h3 {
+                font-size: 17px;
+                margin-top: 10px;
+                text-align: center;
+                small {
+                    color: darken(color($colors, light), 50%);
+                    display: block;
+                }
+            }
+            small {
+                display: block;
+                text-align: center;
+            }
+        }
+        .product-detail-header {
+            background-color: darken(color($colors, light), 2%);
+            position: relative;
+            padding-top: 15px;
+            .product-price-normal {
+                font-size: 20px;
+                font-weight: 600;
+                color: color($colors, primary);
+            }
+            .product-price-normal-through {
+                font-size: 16px;
+                font-weight: 600;
+                color: darken(color($colors, light), 50%);
+                text-decoration: line-through;
+                margin-left: 5px;
+            }
+            .product-instock {
+                margin-left: 15px;
+                color: color($colors, primary);
+            }
+            .product-outstock {
+                @extend.product-instock;
+                color: color($colors, danger);
+            }
+            [col-4] {
+                text-align: right;
+                .icon {
+                    color: darken(color($colors, light), 50%);
+                    font-size: 22px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .product-detail-content {
+            h4 {
+                margin-top: 0;
+                font-size: 17px;
+            }
+            p {
+                margin-bottom: 0;
+            }
+        }
+        .list {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .video-player {
+            width: 100%;
+            height: 100%;
+            max-height: 220px;
+        }
+    }
+}
+
+.request_btn {
+    background-color: transparent;
+    box-shadow: none;
+    background-image: url(../assets/request.png);
+    background-size: 100% 100%;
+}
+
+.svg {
+    // mask-size: contain;
+    // // mask-position: 50% 50%;
+    // mask-repeat: no-repeat  top left;;
+    // background-size: contain;
+    // // background: currentColor;
+    // // transform: translate(100px, 100px);
+    // width: .6em;
+    // height: .6em;
+}
+
+ion-icon {
+    &[class*="ramz-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain; // mask-position: 50% 50%;
+        mask-repeat: no-repeat top left;
+        ;
+        background-size: contain; // background: currentColor;
+        // transform: translate(100px, 100px);
+        width: 1em;
+        height: 1em;
+    } // custom icons
+    &[class*="ramz-request"] {
+        mask-image: url(../assets/request.svg);
+    }
+    &[class*="ramz-heart"] {
+        mask-image: url(../assets/heart.svg);
+    }
+    &[class*="ramz-whats"] {
+        mask-image: url(../assets/whats.svg);
+    }
+}

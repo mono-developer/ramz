@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="641px" height="203px" viewBox="0 0 641 203" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>file-upload</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 640.827527 0 640.827527 202.926926 0 202.926926"></polygon>
+    </defs>
+    <g id="Publisher" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-55.000000, -420.000000)">
+        <g id="file-upload" transform="translate(55.000000, 420.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#D7D9DC" xlink:href="#path-1"></use>
+            <g mask="url(#mask-2)" fill="#FFFFFF">
+                <g transform="translate(302.000000, 71.000000)">
+                    <polygon id="Shape" points="14.2857143 46.6470588 35.7142857 46.6470588 35.7142857 25.1176471 50 25.1176471 25 0 0 25.1176471 14.2857143 25.1176471"></polygon>
+                    <rect id="Rectangle-path" x="0" y="53.8235294" width="50" height="7.17647059"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

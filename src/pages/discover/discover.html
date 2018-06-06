@@ -1,0 +1,45 @@
+<ion-content class="page-login" padding>
+  <ion-row class="grid-t">
+    <ion-col>
+      <div class="logo1">
+        <img class="image" src="assets/icon.png" />
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>
+      <button detail-none ion-button block clear color="dark" text-uppercase style="
+      font-size: 26.0px;
+      color: rgba(74, 73, 74, 1.0);
+      text-align: justify;
+      letter-spacing: 0.65px;">{{ "DISCOVER" | translate }}</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-12>
+      <button detail-none ion-button block clear color="dark" text-captilize style="
+      font-size: 25.0px;
+      color: rgba(74, 73, 74, 1.0);
+      text-align: justify;
+      letter-spacing: 0.65px;">{{ "Ramz" | translate }}</button>
+    </ion-col>
+  </ion-row>
+  <ion-row style="display: flex;
+  justify-content: center;">
+    <ion-col col-8>
+      <button (click)="openIntroPage('user')" style="border-color: rgba(238, 100, 100, 1.0) !important;
+      color: rgba(238, 100, 100, 1.0)!important;width:100%;padding:20px;
+      background-color: transparent;" ion-button block outline small color="secondary">{{ 'User' | translate }}</button>
+    </ion-col>
+  </ion-row>
+  <ion-row style="display: flex;
+  justify-content: center;">
+    <ion-col col-8>
+      <button (click)="openIntroPage('company')" style="border-color: rgba(238, 100, 100, 1.0) !important;
+      color: rgba(238, 100, 100, 1.0)!important;width:100%;padding:20px;
+      background-color: transparent;" ion-button block outline small color="secondary">{{ 'Company' | translate }}</button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

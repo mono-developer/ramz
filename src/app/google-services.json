@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "677567630731",
+    "firebase_url": "https://ramz-2ca06.firebaseio.com",
+    "project_id": "ramz-2ca06",
+    "storage_bucket": "ramz-2ca06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677567630731:android:be945184daecd534",
+        "android_client_info": {
+          "package_name": "com.ramz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677567630731-g5vu4bjf348r3k497b73pe2o5cp5esnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpNWyqyvftDtgbCxXmBWtBd-dGhCXOlCk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

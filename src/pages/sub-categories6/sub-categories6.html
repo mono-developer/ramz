@@ -1,0 +1,110 @@
+<ion-header>
+
+  <ion-navbar color="light">
+    <ion-title text-center>
+      {{parent.CategoryEnglish| translate }}
+    </ion-title>
+
+    <ion-buttons end>
+      <button detail-none ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="page-sub-categories6" style="background-color: white !important">
+  <ion-card *ngFor="let c of subcategories" color="light" (click)="openProducts(c)">
+
+
+    <!-- <img src="{{config.url+c.image}}" /> -->
+    <ion-grid style="   
+     align-items: center;
+     justify-content: center;
+     position: absolute;
+     height: 100%;">
+      <ion-row style="width:100%">
+        <ion-col col-12 style="      display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;">
+          <div class="image" *ngIf="config.langName == 'ar'" style="position: absolute;right:0.5em;">
+            <img class="avatar" src="{{config.companyImageURL+c.Logo}}" alt="Avatar">
+          </div>
+          <div class="image" *ngIf="config.langName != 'ar'" style="position: absolute;left:0.5em;">
+            <img class="avatar" src="{{config.companyImageURL+c.Logo}}" alt="Avatar">
+          </div>
+          <div class="categories-title">
+            <span class="txt">{{c.CompnayName}} </span>
+            <br/>
+            <span class="txt1">{{c.BusinesTitle}}</span>
+          </div>
+
+
+        </ion-col>
+
+      </ion-row>
+      <ion-row class="row" style=" position: absolute;
+      right:3px;
+      bottom:3px;
+    /* height:  20% !important; */
+    width:  100%;
+">
+
+        <ion-col class="col" style="
+  position: absolute;
+  right:3px;
+  bottom:3px;
+  margin-top: 10px;
+   padding:0px !important; 
+  " col-12>
+          <button detail-none ion-button icon-left clear small class="padding-btn" float-right>
+            <ion-icon name="eye" class="custom-icon"></ion-icon>
+            <div style="color: white;">{{c.TotalViewed}}</div>
+          </button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+    <img src="{{config.companyImageURL+c.Banner}}" />
+
+
+
+  </ion-card>
+
+</ion-content>
+<ion-footer>
+  <ion-segment color="dark" mode="md">
+    <ion-segment-button value="HomePage" (click)="openHome()">
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/home.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+    </ion-segment-button>
+    <ion-segment-button value="CategoriesPage" (click)="openTop()">
+
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/grouping.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+    </ion-segment-button>
+    <!-- {{ 'Categories' | translate }} -->
+    <ion-segment-button value="ProductsPage" *ngIf="shared.isCompany" (click)="openPublish()">
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/publish.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+    </ion-segment-button>
+    <ion-segment-button value="ProductsPage" *ngIf="!shared.isCompany" (click)="openRequestPage()">
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/request-user.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+
+    </ion-segment-button>
+
+  </ion-segment>
+
+</ion-footer>
+
+<!-- <ion-content class="scaleable-wrapper" id="scaleable-wrapper">    <div class="very-specific-design" id="very-specific-design">      <h1>I am designed just so.</h1>      <p text-wrap >My design is intentional. I want to be scaled in such a way that scales the design. No reflows or anything, just straight up scaling. Kinda like SVG.</p>        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skull-and-crossbones.svg" alt="" />        <p text-wrap  class="bigred"> ✖ ✖ ✖ </p>      </div>  </ion-content> -->

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg   viewBox="0 0 275 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>done</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Request" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-411.000000, -822.000000)">
+        <g id="done" transform="translate(410.000000, 814.500000)">
+            <rect id="Checkmark" stroke="#E5E8EC" stroke-width="3" x="248.905139" y="9.37476181" width="24.8265223" height="23.6175473"></rect>
+            <text id="Existing-(Product,-I" font-family=".SFNSDisplay-Medium, .SF NS Display" font-size="28" font-weight="400" fill="#454545">
+                <tspan x="0.394809138" y="27.3747783">Existing </tspan>
+                <tspan x="101.183872" y="27.3747783" font-size="13">(Product, Item, Service)</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

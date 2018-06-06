@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button detail-none *ngIf="shared.isActive" ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      <div class="categories-title">{{parent.PackageName}}</div>
+    </ion-title>
+    <ion-buttons end>
+      <button detail-none *ngIf="shared.isActive" ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="page-pkg-details">
+  <ion-card [ngClass]="changeBackground(parent.PackageId)">
+    <div class="categories-title" [class.line-through]="parent.PackageId==1 ">{{parent.SubscriptionPrice + ' '}}{{'OMR'|translate}}</div>
+    <div class="categories-subtitle" *ngIf="parent.PackageId==1 ">{{'Free for ' }} {{parent.OfferDays}} {{' days'}} </div>
+  </ion-card>
+
+
+
+
+  <ion-list no-padding no-margin>
+    <ion-row no-padding>
+      <ion-item-divider>
+        <ion-col center text-center no-padding>
+          <ion-item text-center text-wrap>
+            <br/>
+            <ion-note text-wrap>Your payment will be
+              <span style="color:#D0021B">{{parent.PackageId==1?'Free':parent.SubscriptionPrice + 'OMR'}}</span> for
+              <br/>{{parent.OfferDays}} days expires on
+              <span style="color:#D0021B">{{details?.DueDate}}</span>
+            </ion-note>
+          </ion-item>
+          <ion-item text-center text-wrap>
+            <ion-note text-wrap>{{'Bank Name :Bank Muscat' | translate}}</ion-note>
+            <br/>
+            <ion-note text-wrap>{{'Account Number: 0468051137090016' | translate}}</ion-note>
+            <br/>
+            <ion-note text-wrap>{{'Albawareg marketing' | translate}}</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-item-divider>
+    </ion-row>
+    <ion-item-divider>
+      <ion-row no-padding>
+        <ion-col col-8 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-left>
+            <ion-note text-wrap>Purchase Amount</ion-note>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-4 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-right text-right>
+            <ion-note text-wrap>{{parent?.SubscriptionPrice}} {{' OMR'}}</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-padding>
+        <ion-col col-8 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-left>
+            <ion-note text-wrap>{{'Publishing Percentage'|translate}}</ion-note>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-4 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-right text-right>
+            <ion-note text-wrap>{{details?.PublishingPercentage}} {{'%'}}</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-padding>
+        <ion-col col-8 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-left>
+            <ion-note text-wrap>{{'Delivery Ratio'|translate}}</ion-note>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-4 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-right text-right>
+            <ion-note text-wrap>{{details?.DeliveryRatio}} %</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row no-padding>
+        <ion-col col-8 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-left>
+            <ion-note text-wrap>{{'Excellence Ratio'|translate}}</ion-note>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-4 text-center no-padding>
+          <ion-item no-margin no-padding text-wrap float-right text-right>
+            <ion-note text-wrap>{{details?.ExcellenceRatio}} %</ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-item-divider>
+
+    <ion-item *ngIf="parent.PackageId!=1">
+      <ion-label color="dark" text-wrap>{{'I have reviewed and agree to the terms and conditions and i will follow it.'|translate}}</ion-label>
+      <ion-checkbox class="checkbox-square" item-start [(ngModel)]="termsAgree"></ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="parent.PackageId!=1">
+      <ion-item-sliding #slidingItem (ionSwipe)="pay(slidingItem)">
+        <ion-item>
+
+          <img *ngIf="config.langName != 'ar'" anima-src="assets/img/slide_to_pay.svg" class="cloudupload" (click)='selectPhoto()'
+            src="assets/img/slide_to_pay.svg" />
+          <img *ngIf="config.langName == 'ar'" anima-src="assets/img/slide_to_pay_ar.svg" class="cloudupload" (click)='selectPhoto()'
+            src="assets/img/slide_to_pay_ar.svg" />
+
+        </ion-item>
+        <ion-item-options *ngIf="termsAgree" side="left" (ionSwipe)="pay(slidingItem)">
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-item>
+
+
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer *ngIf="parent?.PackageId==1">
+  <ion-toolbar transparent>
+    <button detail-none ion-button block (click)="goToFree()" style="border-color: rgba(238, 100, 100, 1.0) !important;
+                  width:90%;padding:20px;margin-left: auto;margin-right: auto;color:#4A4A4A;
+                 ;text-transform: none; background-color: transparent;" outline color="secondary">
+      <ion-label color="dark">{{ 'Continue' | translate }}</ion-label>
+    </button>
+  </ion-toolbar>
+
+
+</ion-footer>

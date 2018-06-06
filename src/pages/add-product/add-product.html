@@ -1,0 +1,104 @@
+<ion-header no-border>
+    <!-- transparent -->
+    <ion-navbar align-title="center">
+        <ion-title *ngIf="!item">{{'Add Product'|translate}}</ion-title>
+        <ion-title *ngIf="item">{{'Edit Product'|translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <form #userPhotoForm="ngForm" (ngSubmit)="uploadPhoto(tempPhoto)">
+        <ion-list>
+
+            <ion-row>
+                <ion-col>
+                    <ion-label color="dark" class="product-name">
+                        Add
+                    </ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label color="dark" class="label1">
+                        Upload your product, service, item
+                    </ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-label color="dark" class="label2">
+                        Allowed  images formats:
+                        <br/>
+                        <span class="txt"> jpg, png, jpeg</span>
+                    </ion-label>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-label color="dark" class="label3">
+                        Allowed  video formats:
+                        <br/>
+                        <span class="txt"> 3GPP, MPEG-4 </span>
+                    </ion-label>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col col-2>
+                </ion-col>
+                <ion-col col-8>
+                    <div class="item profilepic-border" ion-item align="center">
+                        <img anima-src="assets/img/2.png" class="rectangle7" src="assets/img/2.png" />
+                        <img anima-src="assets/img/1.svg" class="cloudupload" (click)='selectPhoto()' src="{{profilePicture}}" />
+                    </div>
+                </ion-col>
+                <ion-col col-2>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col width-100 col-12 col-sm>
+                        <ion-item>
+                            <ion-label color="dark" floating>{{'Product Name'|translate}}</ion-label>
+                            <ion-input type="text" name="itemtitle" [(ngModel)]="data.itemtitle" required></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col width-50 col-6 col-sm>
+                        <ion-item>
+                            <ion-label color="dark" floating>{{'Price'|translate}}</ion-label>
+                            <ion-input min="0" inputmode="numeric" pattern="[0-9.]*[0-9]" type="text" name="price" [(ngModel)]="data.price" required></ion-input>
+                        </ion-item>
+                    </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                    <ion-col width-50 col-12 col-sm>
+                        <ion-item>
+                            <ion-label color="dark" floating>{{'Description'|translate}}</ion-label>
+                            <ion-textarea type="text" name="itemdescription" [(ngModel)]="data.itemdescription" required rows="2"></ion-textarea>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+
+        </ion-list>
+
+    </form>
+</ion-content>
+<ion-footer>
+    <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+        <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+            color="dark" type="submit" [disabled]="(!userPhotoForm.form.valid  &&  tempPhoto==null )||!userPhotoForm.form.valid"
+            (click)="userPhotoForm.ngSubmit.emit()">{{'Save and continue'|translate}}</button>
+
+    </ion-toolbar>
+</ion-footer>

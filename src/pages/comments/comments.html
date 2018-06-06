@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      {{request?.Title| translate }}
+    </ion-title>
+    <ion-buttons end>
+      <!-- <button detail-none  ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button> -->
+      <button detail-none ion-button icon-only (click)="openInfo(request)">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let c of comments" text-wrap class="borderBottom" (click)="openInfo(c)">
+      <!-- <ion-avatar item-start>
+        <img src="{{c.Logo?config.companyImageURL+c.Logo:config.userImageURL+c.UserPhoto}}">
+      </ion-avatar> -->
+      <ion-thumbnail item-start>
+        <img src="{{c.Logo?config.companyImageURL+c.Logo:config.userImageURL+c.UserPhoto}}">
+      </ion-thumbnail>
+
+      <h2 style="padding-top: 7px;">{{c.CompnayName?c.CompnayName: c.UserName}}</h2>
+
+      <ion-note item-end [ngClass]="{'right': langId!=1, 'left': langId==1}">{{c.CreatedAt}}</ion-note>
+      <br/>
+      <h5 class="ws">{{c.Comment}} </h5>
+      <br/>
+      <div>
+        {{'Regards'|translate}},
+        <p text-wrap >{{c.CompnayName?c.CompnayName: c.UserName}}</p>
+        <p text-wrap >{{c.SenderIs}}</p>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light" style="background-color: wheat !important;padding:1px !important">
+    <ion-row>
+      <ion-col col-2 start>
+        <ion-icon name="attach" style=" color: #EE6464" (click)='selectFile()'></ion-icon>
+      </ion-col>
+      <ion-col col-7 start>
+        <ion-input type="text" placeholder="{{'Write your comment'|translate}}" [(ngModel)]="commentdata"></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <button detail-none ion-button full [disabled]="commentdata===null || commentdata===undefined || commentdata==='' " style=" color: #EE6464"
+          color="light" (click)="sendComment()">{{'send'|translate}}</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-footer>

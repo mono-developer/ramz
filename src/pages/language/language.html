@@ -1,0 +1,43 @@
+<ion-content class="page-language">
+  <ion-row class="grid-t">
+    <ion-col>
+      <div class="logo">
+        <img class="image" src="assets/icon.png" />
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style=" margin-top: 4%;">
+    <ion-col>
+      <h5 style="color:#C5C5C5;">{{'Select Language'| translate }}</h5>
+    </ion-col>
+  </ion-row>
+
+
+
+  <ion-row>
+    <ion-col col-12>
+      <ion-list radio-group [(ngModel)]="selectedLanguage">
+        <ion-item-divider *ngFor="let l of languages">
+          <img *ngIf="l.image" src="assets/{{l.image}}" item-left>
+          <ion-label color="dark">
+            {{l.name |translate}}
+          </ion-label>
+          <ion-radio checked *ngIf="l.name=='English'" [value]="l"></ion-radio>
+          <ion-radio *ngIf="l.name !='English'" [value]="l"></ion-radio>
+        </ion-item-divider>
+      </ion-list>
+
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-bottom: 10%;">
+    <ion-col col-2></ion-col>
+    <ion-col col-8>
+      <button detail-none style="padding: 10px" ion-button block outline color="danger" type="button" (click)="updateLanguage(selectedLanguage)">
+        <ion-label color="dark">{{'Confirm'|translate}}</ion-label>
+      </button>
+    </ion-col>
+    <ion-col col-2></ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      {{'Requests'| translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list inset>
+    <ion-item *ngFor="let r of requests" text-wrap class="borderBottom" (click)="openRequests(r)">
+      <h2 text-wrap>{{r.Title}}</h2>
+      <h3 text-wrap>{{r.Description}}</h3>
+      <p text-wrap [ngClass]="{'secondary': r.IsSeenByCompany==1 || r.IsSeenByUser==1, 'danger': r.IsSeenByCompany==0 || r.IsSeenByUser==0 }">{{r.CreatedAt}} </p>
+      <ion-icon ios="ios-arrow-forward" md="ios-arrow-forward" color="arrow" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

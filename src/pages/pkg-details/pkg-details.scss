@@ -1,0 +1,85 @@
+page-pkg-details{
+    .page-pkg-details{
+        .card:first-child{
+            margin-top: 0px;
+        }
+        ion-note{
+            color: #787878;
+        }
+        .card {
+          
+            border-radius: 0;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            min-height: 140px;
+            max-height: 140px;
+    
+            margin-right: auto;
+            margin-left: auto;
+            .categories-title {
+                position: absolute;
+                top: 30%;
+                font-size: 1.5em;
+                width: 100%;
+                font-weight: bold;
+                color: #fff;
+            }
+            .line-through {
+                text-decoration: line-through #f00;
+            }
+            .pkg-txt {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                position: absolute;
+                font-size: 2em;
+                height: 100%;
+                color: #fff;
+                padding: 5px;
+            }
+        
+            .categories-subtitle {
+                font-size: 1.0em;
+                position: absolute;
+                bottom: 30%;
+                width: 100%;
+                color: #fff;
+            }
+        }
+        .card::before{
+            content: "";
+            margin-right: auto;
+            margin-left: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+     
+        }
+        .package1{
+            background-color:#D14B36;
+            opacity: 0.55;
+        }
+        .package2{
+            background-color:#D55586;
+            opacity: 0.55;
+        }
+        .package3{
+            
+            background-color:#882B36;
+            opacity: 0.55;
+        }
+        .package4{
+                     
+            background-color:#2FA8AB;
+            opacity: 0.55;
+        }
+        .package5{
+                      
+            background-color:#882B36;
+            opacity: 0.55;
+        }
+    }
+}

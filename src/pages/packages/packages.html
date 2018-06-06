@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="light">
+    <button detail-none *ngIf="shared.isActive" ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      <div class="categories-title">{{'Packages'|translate}}</div>
+    </ion-title>
+    <ion-buttons end>
+      <button detail-none *ngIf="shared.isActive" ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+
+      <button detail-none *ngIf="!shared.isActive" ion-button icon-only (click)="shared.logOut()">
+        <ion-icon ios="ios-log-out" md="ios-log-out"></ion-icon>
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="page-packages">
+  <ion-card class="animated flipInX" *ngFor="let c of shared.packages" [ngClass]="changeBackground(c.PackageId)" (click)="openDetails(c)">
+    <!-- <img src="http://demo0.ionicecommerce.com/resources//assets//images//category_images/1502285903.girls.jpg" /> -->
+
+    <p text-wrap class="pkg-txt" float-left>
+
+      <span>{{c.PackageName}}</span>
+    </p>
+    <div class="categories-title" [class.line-through]="c.PackageId==1">{{c.SubscriptionPrice + ' ' }}{{'OMR'|translate}}</div>
+    <div class="categories-subtitle" *ngIf="c.PackageId==1">{{'Free for'|translate}} {{' '+c.OfferDays+' '}} {{'days'|translate}} </div>
+    <p text-wrap style="position: absolute; bottom: 2px;right: 2px;" [ngClass]="changeColor(c.PackageId)" float-right>
+
+      <span>{{'Yearly' |translate}}{{c.SubscriptionPrice*12}} {{'OMR'|translate}}</span>
+    </p>
+
+
+  </ion-card>
+</ion-content>

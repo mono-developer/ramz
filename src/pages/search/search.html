@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      {{'Search'| translate }}
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button detail-none  ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <form #loginForm="ngForm" (ngSubmit)="getSearchData(1,null)">
+    <ion-searchbar *ngIf="shared.isIOS" mode="ios" [(ngModel)]="search" name="search" placeholder="{{'Search ...'|translate}}"
+      [showCancelButton]="shouldShowCancel" (ionInput)="onChangeKeyword($event)">
+    </ion-searchbar>
+
+    <ion-searchbar *ngIf="!shared.isIOS" [(ngModel)]="search" name="search" placeholder="{{'Search ...'|translate}}" [showCancelButton]="shouldShowCancel"
+      (ionInput)="onChangeKeyword($event)">
+    </ion-searchbar>
+  </form>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="dark">{{'Categories'|translate}}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="categoryId" name="categoryId"
+            (ionChange)="getLookupData(1)" class="selector">
+            <ion-option value="">{{'Choose'|translate}}</ion-option>
+            <ion-option *ngFor="let cat of allCategories" [value]="cat.CategoryId">{{cat.CategoryEnglish}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50 col-6 col-sm>
+        <ion-item>
+          <ion-label color="dark">{{'Governorate'|translate}}</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col width-50 col-6 col-sm>
+        <ion-item>
+          <ion-label color="dark">{{'City'|translate}}</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-50 col-6 col-sm>
+        <ion-item>
+          <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="governorateId" name="governorate_id"
+            (ionChange)="getCities(governorateId)" class="selector">
+            <ion-option value="">{{'Choose'|translate}}</ion-option>
+            <ion-option *ngFor="let governorate of governorates" [value]="governorate.GovernorateId">{{governorate.GovernorateEnglish}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col width-50 col-6 col-sm>
+        <ion-item>
+          <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="cityId" name="city_id" (ionChange)="getLookupData(1)"
+            class="selector">
+            <ion-option value="">{{'Choose'|translate}}</ion-option>
+            <ion-option *ngFor="let city of cities" [value]="city.CityId">{{city.CityEnglish}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item *ngFor="let c of searchResult" (click)="openProducts(c)" class="rowStyle">
+            <ion-avatar item-start>
+              <img src="{{config.companyImageURL+c.Logo}}">
+            </ion-avatar>
+
+            <h2 text-wrap>{{c.CompnayName}}</h2>
+            <p text-wrap style="word-wrap: break-word;white-space: pre-wrap">{{c.BusinesTitle}} </p>
+            <p text-wrap style="color: #EE6464" float-right>
+              <ion-icon name="eye"></ion-icon>
+              <span>{{c.TotalViewed}}</span>
+            </p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll #infinite (ionInfinite)="doInfinite($event)" *ngIf="pageNo < totalPages ">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- <ion-fab bottom right>
+    <button detail-none ion-fab (click)="scrollToTop()">
+      <ion-icon ios="ios-arrow-up" md="ios-arrow-up"></ion-icon>
+    </button>
+  </ion-fab>-->
+</ion-content>
+<ion-nav #content></ion-nav>

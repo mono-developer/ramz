@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="81px" height="81px" viewBox="0 0 81 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>map</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="share" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-568.000000, -1062.000000)">
+        <g id="map" transform="translate(568.000000, 1062.000000)">
+            <rect id="Rectangle" x="0" y="0" width="81" height="81"></rect>
+            <circle id="Oval" stroke="#000000" stroke-width="3.65853659" cx="40.5" cy="40.5" r="38.6707317"></circle>
+            <path d="M25.7727273,32.7681818 C25.7727273,40.7209091 40.5,62.5909091 40.5,62.5909091 C40.5,62.5909091 55.2272727,40.7209091 55.2272727,32.7681818 C55.2272727,24.8430682 48.6401653,18.4090909 40.5,18.4090909 C32.3598347,18.4090909 25.7727273,24.8430682 25.7727273,32.7681818 L25.7727273,32.7681818 Z M31.1280992,33.1271591 C31.1280992,28.2395455 35.6266116,23.9318182 40.5,23.9318182 C45.3733884,23.9318182 49.8183471,28.2947727 49.8183471,33.1547727 C49.8183471,38.0423864 45.3466116,43.2061364 40.4464463,43.2061364 C35.5730579,43.2061364 31.1280992,38.0147727 31.1280992,33.1271591 L31.1280992,33.1271591 Z" id="Shape" fill="#000000"></path>
+        </g>
+    </g>
+</svg>

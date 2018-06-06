@@ -1,0 +1,37 @@
+request-order {
+    .svg-content {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .svg-container {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        padding-bottom: 20%;
+        vertical-align: middle;
+        overflow: hidden;
+    }
+    ion-input {
+        input {
+            color: #000;
+        }
+    }
+    .title {
+        font-size: 18px;
+        span {
+            font-size: 12px;
+        }
+    }
+    .video-player {
+        width: 120px;
+        margin: 0 auto;
+        display: block;
+    }
+    .t_des {
+        width: 100%;
+        text-align: center;
+        margin: 3px;
+    }
+}

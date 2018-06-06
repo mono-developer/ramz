@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="22px" viewBox="0 0 50 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>Heart Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Order-Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-632.000000, -216.000000)">
+        <path d="M657,258 C657,258 682,242.407402 682,227.651217 C682,212.895033 659.817857,211.759351 657,226.516495 C654.182143,211.759351 632,212.895033 632,228.786899 C632,244.678764 657,258 657,258 L657,258 Z" id="Heart-Icon" fill="#EA4F4F"></path>
+    </g>
+</svg>

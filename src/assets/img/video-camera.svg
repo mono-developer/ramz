@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="74px" viewBox="0 0 140 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>video-camera</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Espreso-Cafe" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-485.000000, -1073.000000)">
+        <g id="04" transform="translate(385.000000, 895.000000)" fill="#C3B295">
+            <g id="video-camera" transform="translate(100.000000, 178.000000)">
+                <path d="M128.333333,82.25 L99.1666667,70.5 L99.1666667,82.25 C99.1666667,88.7393458 93.9433221,94 87.5,94 L11.6666667,94 C5.22334459,94 0,88.7393458 0,82.25 L0,11.75 C0,5.26065419 5.22334459,0 11.6666667,0 L87.5,0 C93.9433221,0 99.1666667,5.26065419 99.1666667,11.75 L99.1666667,23.5 L128.333333,11.75 C134.776655,11.75 140,17.0106542 140,23.5 L140,70.5 C140,76.9893458 134.776655,82.25 128.333333,82.25 L128.333333,82.25 Z M87.5,58.75 L87.5,11.75 L11.6666667,11.75 L11.6666667,82.25 L87.5,82.25 L87.5,58.75 L87.5,58.75 Z M128.333333,23.5 L99.1666667,35.25 L99.1666667,58.75 L128.333333,70.5 L128.333333,23.5 L128.333333,23.5 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

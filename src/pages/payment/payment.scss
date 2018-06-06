@@ -1,0 +1,81 @@
+page-payment {
+    $segment-button-ios-background-color-activated:#E594B3;
+    $toolbar-ios-active-color:#E594B3;
+  
+    .payment{
+        ion-segment-button{
+            //max-width: 25px;
+            border-style: solid;
+          }
+          $segment-button-ios-background-color-activated:#E594B3;
+        margin-bottom: 0px;
+        .photo{
+            // position: relative;
+            width: 100px;
+            height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+       
+
+            .image{
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-left: auto;
+                margin-right: auto;
+           
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            
+        }
+        .list{
+            .item{
+                padding-left: 0;
+            }
+        }
+    }
+}
+          
+        //   .segment-button {
+        //     border-style: none;
+        //     border-color: #e62100;
+        //     color: #e62100;
+        //     border-width: thin;
+        //   }
+          
+        //   .firstBtn{
+        //     border-radius: 90px 90px 90px 90px;
+        //     // margin-right: 0px;
+        //     margin-left: 0px;
+        //     line-height: 3.4rem;
+        //     height: 100%;
+        //     // width: 100%
+        // }
+        //   .segment-button:not(:first-of-type) {
+        //     // border-radius: 90px 90px 90px 90px;
+        //    // margin-right: 0px;
+        //     // margin-left: 20px;
+        //     line-height: 3.4rem;
+        //     height: 100%;
+        //     // width: 100%;
+        // }
+        //   .lastBtn {
+        //     border-radius: 90px 90px 90px 90px;
+        //     // margin-right: 0px;
+        //     // margin-left: 20px;
+        //     line-height: 3.4rem;
+        //     height: 100%;
+        //     // width: 100%;
+        // }
+          
+          
+        //    .segment-activated{
+        //     background-color: #E594B3;
+        //     color: #ffffff;
+        //   }
+
+    

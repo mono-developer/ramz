@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="81px" height="81px" viewBox="0 0 81 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>phone</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="share" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-80.000000, -1062.000000)">
+        <g id="phone" transform="translate(80.000000, 1062.000000)">
+            <rect id="Rectangle" x="0" y="0" width="81" height="81"></rect>
+            <circle id="Oval" stroke="#000000" stroke-width="3.65853659" cx="40.5" cy="40.5" r="38.6707317"></circle>
+            <path d="M49.95,44.55 C47.25,47.25 47.25,49.95 44.55,49.95 C41.85,49.95 39.15,47.25 36.45,44.55 C33.75,41.85 31.05,39.15 31.05,36.45 C31.05,33.75 33.75,33.75 36.45,31.05 C39.15,28.35 31.05,20.25 28.35,20.25 C25.65,20.25 20.25,28.35 20.25,28.35 C20.25,33.75 25.7985,44.6985 31.05,49.95 C36.2988,55.2015 47.25,60.75 52.65,60.75 C52.65,60.75 60.75,55.35 60.75,52.65 C60.75,49.95 52.65,41.85 49.95,44.55" id="Shape" fill="#000000"></path>
+        </g>
+    </g>
+</svg>

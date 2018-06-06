@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      {{'Orders'| translate }}
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button detail-none  ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let r of orders" text-wrap class="borderBottom" (click)="openOrders(r)">
+      <ion-icon [ngClass]="{'numberGreenCircle': r.IsSeenByCompany==1 || r.IsSeenByUser==1, 'numberRedCircle': r.IsSeenByCompany==0 || r.IsSeenByUser==0 }"
+        item-start>{{r.OffersCounter}}</ion-icon>
+      <h2 text-wrap>{{r.Title}}</h2>
+      <p text-wrap>{{r.Description}}</p>
+      <p text-wrap [ngClass]="{'secondary': r.IsSeenByCompany==1 || r.IsSeenByUser==1, 'danger': r.IsSeenByCompany==0 || r.IsSeenByUser==0 }">{{r.CreatedAt}} </p>
+      <ion-icon ios="ios-arrow-forward" md="ios-arrow-forward" color="arrow" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

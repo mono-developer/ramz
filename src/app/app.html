@@ -1,0 +1,130 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{ 'Menu' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="side-menu">
+
+    <ion-list class="list-avatar">
+      <ion-item *ngIf="shared.customerData.customers_id==null" (click)="openLoginPage()">
+        <ion-avatar item-start style="margin-left:30px">
+          <ion-icon name="ramz-avatar"></ion-icon>
+        </ion-avatar>
+        <h2 text-wrap>{{ 'Login & Register' | translate }}</h2>
+        <p text-wrap>{{ 'Please login or create an account for free' | translate }}</p>
+      </ion-item>
+
+      <ion-item *ngIf="shared.customerData.customers_id!=null && !shared.isCompany" menuClose (click)="openPage('profile')">
+        <ion-avatar item-start>
+          <img *ngIf="!shared.isCompany" src="{{config.url+config.userUploads+shared.customerData.customers_picture}}">
+        </ion-avatar>
+        <h2 text-wrap>{{shared.customerData.customers_firstname +"&nbsp;"+shared.customerData.customers_lastname}}</h2>
+        <p text-wrap>{{shared.customerData.customers_email_address}}</p>
+        <!-- <button detail-none  ion-button item-end color="secondary" (click)="logOut()">
+            {{'Log Out' | translate }}
+          </button> -->
+      </ion-item>
+
+      <ion-item *ngIf="shared.customerData.customers_id!=null && shared.isCompany" menuClose (click)="openHomePage()">
+        <ion-avatar item-start>
+          <img *ngIf="shared.isCompany" src="{{config.url + config.companyUploads + shared.customerData.customers_picture}}">
+        </ion-avatar>
+        <h2 text-wrap>{{shared.customerData.customers_firstname +"&nbsp;"+shared.customerData.customers_lastname}}</h2>
+        <p text-wrap>{{shared.customerData.customers_email_address}}</p>
+        <!-- <button detail-none  ion-button item-end color="secondary" (click)="logOut()">
+            {{'Log Out' | translate }}
+          </button> -->
+      </ion-item>
+
+    </ion-list>
+
+
+    <ion-list class="list-menu " no-lines>
+
+      <button detail-none menuClose ion-item (click)="openPage('home5')">
+        {{ 'Home' | translate }}
+        <ion-icon item-left ios="ios-home" md="ios-home"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('home5')"> {{ 'Home' | translate }}</ion-label>
+      </button>
+      <button detail-none menuClose ion-item (click)="openPage('ramz')">
+        {{ 'Rmz' | translate }}
+        <ion-icon item-left name="ramz-ramz"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('ramz')"> {{ 'Rmz' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item (click)="openPage('profile')">
+        {{ 'Profile' | translate }}
+        <ion-icon item-left name="ramz-user"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('profile')"> {{ 'Profile' | translate }}</ion-label>
+      </button>
+      <button detail-none *ngIf="shared.isCompany" menuClose ion-item (click)="openPage('packages')">
+        {{ 'Packages' | translate }}
+        <ion-icon item-left name="ramz-package"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('packages')"> {{ 'Packages' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item (click)="openPage('fav')">
+        {{ 'Favorites' | translate }}
+        <ion-icon item-left name="md-heart" style="color: #222 !important;"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('fav')"> {{ 'Favorites' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item (click)="openPage('notifications')">
+        {{ 'Notifications' | translate }}
+        <ion-icon item-left name="ramz-notification"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('notifications')"> {{ 'Notifications' | translate }}</ion-label>
+      </button>
+
+
+      <button detail-none menuClose ion-item (click)="openPage('requests')">
+        {{ 'Requests' | translate }}
+        <ion-icon item-left name="ios-create" style="font-size: 35px"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('requests')"> {{ 'Requests' | translate }}</ion-label>
+      </button>
+
+      <button *ngIf="!shared.isCompany" menuClose ion-item (click)="openPage('commercials')">
+        {{ 'Commercials' | translate }}
+        <ion-icon item-left name="ramz-commercial"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('commercials')"> {{ 'Commercials' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item *ngIf="shared.isCompany" (click)="openPage('orders')">
+        <!-- <button detail-none  menuClose ion-item (click)="openPage('orders')"> -->
+        {{ 'Orders' | translate }}
+        <ion-icon item-left name="ramz-edit"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('orders')"> {{ 'Orders' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item (click)="openPage('NewCompanies')">
+        {{ 'New Companies' | translate }}
+        <ion-icon item-left name="ramz-company"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('NewCompanies')">{{ 'New Companies' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item (click)="openPage('ramzRating')">
+        {{ 'Rating' | translate }}
+        <ion-icon item-left name="ramz-fav"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('ramzRating')"> {{ 'Rating' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item (click)="openPage('setup')">
+        {{ 'Settings' | translate }}
+        <ion-icon item-left name="ramz-setting"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('setup')"> {{ 'Settings' | translate }}</ion-label>
+      </button>
+
+      <button detail-none menuClose ion-item (click)="openPage('contactUs')">
+        {{ 'Contact Us' | translate }}
+        <ion-icon item-left name="ramz-mail"></ion-icon>
+        <ion-label color="dark" class="text-design" (click)="openPage('contactUs')"> {{ 'Contact Us' | translate }}</ion-label>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

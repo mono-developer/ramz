@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      {{'Top 10'| translate }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content overflow-scroll="true">
+  <h1 style="color:#c4c4d1; margin: 35px;text-align: center;">{{'The top 10'| translate }}
+    <span style="color:#EE6464">{{months[currentDate.getMonth()] +' '+ currentDate.getFullYear()}}</span>
+  </h1>
+  <div *ngFor="let item of top10s" class="swiper-view">
+    <!-- <p>{{item.key}}</p> -->
+    <!-- <div *ngFor=" let pk1 of item.value[ 'A'] "> -->
+    <div *ngIf="item.value[ 'A'].length> 0">
+      <swiper-round [pk]="item.value['A']" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
+    </div>
+    <div *ngIf="item.value['B'].length > 0">
+      <swiper-round [pk]="item.value['B']" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
+    </div>
+
+    <!-- </div> -->
+  </div>
+
+  <!-- <ion-list>
+    <ion-row *ngFor="let top10 of top10s">
+      <ion-col col-12>
+        <ion-slides dir="{{direction}}">
+          <div *ngFor="let c of top10.value; let i = index;">
+            <ion-slide *ngIf="i % 3 === 0" style="">
+              <div class="current">
+                <div class="image">
+                  <img class="avatar" src="{{config.companyImageURL+top10.value[i]?.Logo}}" (click)="openCompany(top10.value[i]?.CompanyId)">
+                </div>
+              </div>
+              <div *ngIf="i+1 < top10.value.length" class="current">
+                <div class="image">
+                  <img class="avatar" src="{{config.companyImageURL+top10.value[i+1]?.Logo}}" (click)="openCompany(top10.value[i+1]?.CompanyId)">
+                </div>
+              </div>
+              <div *ngIf="i+2  < top10.value.length" class="current">
+                <div class="image">
+                  <img class="avatar" src="{{config.companyImageURL+top10.value[i+2]?.Logo}}" (click)="openCompany(top10.value[i+2]?.CompanyId)">
+                </div>
+              </div>
+
+            </ion-slide>
+          </div>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-list> -->
+</ion-content>

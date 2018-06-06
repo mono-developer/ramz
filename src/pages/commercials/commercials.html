@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>
+      {{'Commercials'| translate }}
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button icon-only class="cart-button" (click)="openCart()">
+        <ion-icon name="cart">
+          <ion-badge color="secondary">{{shared.cartquantity}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content overflow-scroll="true">
+
+  <div class="swiper-view" *ngFor="let item of commercials">
+    <p>{{item.key}}</p>
+    <div>
+      <swiper-view [comC]="item.value" [configURL]="config.companyImageURL" (shareClick)="openSharePage($event)" (locationClick)="openLocationPage($event)"
+        (favClick)="setFav($event)"></swiper-view>
+    </div>
+
+  </div>
+
+  <!--
+ 
+  <ion-list>
+    <ion-row *ngFor="let commercial of commercials">
+      <ion-col col-12>
+        <h2 class="borderBottom">{{commercial.key}}</h2>
+        <ion-slides dir="{{direction}}">
+
+          <ion-slide *ngFor="let c of commercial.value; let i = index;">
+
+            <div style="display: flex;">
+              <div *ngIf="(commercial.value.length ==2 && i!=0) || commercial.value.length > 2" class="previous">
+                <button ion-button icon-only clear small item-start class="position-absolute" (click)="openSharePage(i != 0?commercial.value[i-1]:commercial.value[commercial.value.length-1])">
+                  <ion-icon name="share"></ion-icon>
+                </button>
+                <button ion-button icon-only clear small class="position-absolute bottom" (click)="openLocationPage(i != 0?commercial.value[i-1]:commercial.value[commercial.value.length-1])">
+                  <ion-icon name="locate"></ion-icon>
+                </button>
+                <button ion-button icon-only clear small item-end class="position-absolute right" (click)="setFav(i != 0?commercial.value[i-1]:commercial.value[commercial.value.length-1])">
+                 
+                  <ion-icon [name]="(i != 0?commercial.value[i-1]:commercial.value[commercial.value.length-1]).favorite?'star':'star-outline'"></ion-icon>
+                </button>
+                <img *ngIf="i != 0" src="{{config.companyImageURL+commercial.value[i-1]?.ImagePath}}">
+                <img *ngIf="i == 0" src="{{config.companyImageURL+commercial.value[commercial.value.length-1]?.ImagePath}}">
+              </div>
+
+              <div *ngIf="(commercial.value.length ==2 && i==0) || commercial.value.length <2" class="previous">
+              </div>
+
+              <div class="current">
+                <button ion-button icon-only clear small item-start class="position-absolute" (click)="openSharePage(c)">
+                  <ion-icon name="share"></ion-icon>
+                </button>
+                <button ion-button icon-only clear small item-bottom class="position-absolute bottom" (click)=" openLocationPage(c)">
+                  <ion-icon name="locate"></ion-icon>
+                </button>
+                <button ion-button icon-only clear small item-end class="position-absolute right" (click)="setFav(c)">
+                
+                  <ion-icon [name]="c?.favorite?'star':'star-outline'"></ion-icon>
+                </button>
+                <img src="{{config.companyImageURL+c.ImagePath}}" style="width: 100%">
+              </div>
+
+              <div *ngIf="(commercial.value.length ==2 && i!=commercial.value.length-1) || commercial.value.length > 2" class="next">
+                <button ion-button icon-only clear small item-start class="position-absolute" (click)="openSharePage(i != commercial.value.length-1?commercial.value[i+1]:commercial.value[0])">
+                  <ion-icon name="share"></ion-icon>
+                </button>
+                <button ion-button icon-only clear small class="position-absolute bottom" (click)="openLocationPage(i != commercial.value.length-1?commercial.value[i+1]:commercial.value[0])">
+                  <ion-icon name="locate"></ion-icon>
+                </button>
+                <button ion-button icon-only clear small item-end class="position-absolute right" (click)="setFav(i != commercial.value.length-1?commercial.value[i+1]:commercial.value[0])">
+                 <ion-icon [name]="(i != commercial.value.length-1?commercial.value[i+1]:commercial.value[0]).favorite?'star':'star-outline'"></ion-icon>
+                </button>
+                <img *ngIf="i != commercial.value.length-1" src="{{config.companyImageURL+commercial.value[i+1]?.ImagePath}}">
+                <img *ngIf="i == commercial.value.length-1" src="{{config.companyImageURL+commercial.value[0]?.ImagePath}}">
+              </div>
+              <div *ngIf="(commercial.value.length ==2 && i==commercial.value.length-1) || commercial.value.length < 2" class="next">
+              </div>
+            </div>
+
+            <h2>{{c.CompnayName}}</h2>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  -->
+</ion-content>

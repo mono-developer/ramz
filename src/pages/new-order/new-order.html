@@ -1,0 +1,129 @@
+<ion-header no-border>
+  <!-- transparent -->
+  <ion-navbar align-title="center">
+    <ion-title>{{'Request'| translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="page-my-account" padding>
+
+  <!-- Title -->
+  <form #userForm="ngForm">
+    <ion-row>
+      <ion-col width-50 col-6 col-sm>
+        <ion-item>
+          <ion-label color="dark" floating>{{'Order Title'|translate}} </ion-label>
+          <ion-input type="text" [(ngModel)]="data.title" name="title"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-item class="rowStyle"></ion-item>
+    </ion-row>
+
+
+    <!-- Price -->
+    <ion-grid>
+      <p text-wrap>{{'Price'| translate }}
+        <span>&#40;{{'optional' | translate }}&#41;</span>
+      </p>
+      <ion-row>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Price From'|translate}}</ion-label>
+            <ion-input type="number" maxlength="8" [(ngModel)]="data.pricefrom" name="pricefrom"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Price To'|translate}}</ion-label>
+            <ion-input type="number" maxlength="8" name="priceto" [(ngModel)]="data.priceto"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-item class="rowStyle"></ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-100 col-12 col-sm>
+          <p text-wrap>{{'Submission Date'| translate }}</p>
+          <ion-item col-12 (click)="showDateTimePicker()">
+            <ion-buttons>
+              {{date}}
+              <button icon-left block large style="background-color: #fff;">
+                <ion-icon style="zoom:1.8;" color="danger" ios="ios-calendar" md="ios-calendar">
+                </ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-item>
+        </ion-col>
+        <ion-item class="rowStyle"></ion-item>
+      </ion-row>
+
+      <p text-wrap>{{'Location'| translate }}</p>
+      <ion-row>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Governorate'|translate}}</ion-label>
+            <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="data.governorateid" name="customers_governorate"
+              (ionChange)="getCities(data.governorateid)" required>
+              <ion-option *ngFor="let governorate of governorates" [value]="governorate.GovernorateId">{{langId==1?governorate.GovernorateArabic:governorate.GovernorateEnglish}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'City'|translate}}</ion-label>
+            <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="data.cityid" name="customers_city"
+              required>
+              <ion-option *ngFor="let city of cities" [value]="city.CityId">{{langId==1?city.CityArabic:city.CityEnglish}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-item class="rowStyle"></ion-item>
+      </ion-row>
+
+      <!-- Category Page -->
+      <p text-wrap *ngIf="!companyInfo">{{'Category'| translate }}</p>
+      <ion-row *ngIf="!companyInfo">
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Select Category'|translate}}</ion-label>
+            <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="data.categoryid" name="category"
+              (ionChange)="changed(data.categoryid)" required>
+              <ion-option *ngFor="let category of categories" [value]="category.CategoryId">{{langId==1?category.CategoryArabic:category.CategoryEnglish}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-item class="rowStyle"></ion-item>
+      </ion-row>
+
+      <!-- Other Infor -->
+      <p text-wrap>{{'Other Info'| translate }}</p>
+      <ion-row>
+        <ion-col width-50 col-6 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Mobile'|translate}}</ion-label>
+            <ion-input type="tel" maxlength="20" name="mobile" [(ngModel)]="data.mobile" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col width-50 col-12 col-sm>
+          <ion-item>
+            <ion-label color="dark" floating>{{'Additional Notes'|translate}}</ion-label>
+            <ion-textarea type="text" name="comments" [(ngModel)]="data.comments" required rows="2"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+    <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+      color="dark" (click)="save()" [disabled]="!userForm.valid">{{'Save and continue'|translate}}</button>
+  </ion-toolbar>
+</ion-footer>

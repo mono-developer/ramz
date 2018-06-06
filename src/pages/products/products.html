@@ -1,0 +1,138 @@
+<!-- <ion-header no-border>
+  <ion-navbar>
+    <ion-title style="text-align:center;padding-right:64px;">{{ categoryName | translate }}</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+
+<ion-content elastic-header class="page-products" (ionScroll)="onScroll($event)">
+  <div class="background-image">
+
+    <ion-card class="card-master" text-center [style.background-image]="image" style=" width: 100%;        vertical-align: middle;
+    text-align: center !important;    min-height: 235px !important;
+    max-height: 250px;   background-repeat: no-repeat;">
+      <!-- <ion-item>
+        <button detail-none  ion-button icon-only (click)="viewCtrl.dismiss()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+
+    </ion-item> -->
+      <div style="    position: absolute;
+         width: 100%;
+         vertical-align: middle;
+         text-align: center;top:5%">
+        <div>
+          <button *ngIf="config.langName == 'ar'" detail-none ion-button icon-right clear class="padding-btn" (click)="dismiss()" float-right
+            style="position: absolute; top: -3px; right:5px">
+            <ion-icon ios="ios-arrow-back" md="ios-arrow-back" class="custom-icon"></ion-icon>
+          </button>
+          <button *ngIf="config.langName != 'ar'" detail-none ion-button icon-left clear class="padding-btn" (click)="dismiss()" float-left
+            style="position: absolute; top: -3px; left:5px">
+            <ion-icon ios="ios-arrow-back" md="ios-arrow-back" class="custom-icon"></ion-icon>
+          </button>
+          <p text-wrap text-captilize style="  font-size: 1.5em;                    
+                      word-wrap: break-word;
+                      white-space: normal;
+                      color: white;
+                      text-align: center;
+                 
+                      letter-spacing: 0.22px;">
+            {{ categoryName | translate }}
+          </p>
+          <rating [(ngModel)]="rating" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+            nullable="false">
+          </rating>
+        </div>
+        <ion-row style="width:100%">
+          <!-- <ion-col col-3>
+            <div class="image">
+              <img class="avatar" src="{{config.companyImageURL+parent?.Logo}}" alt="Avatar">
+            </div>
+          </ion-col> -->
+          <ion-col col-12>
+            <div *ngIf="config.langName == 'ar'" class="image" style="position: absolute;top: 0px;right: 1.5em;">
+              <img class="avatar" src="{{config.companyImageURL+parent?.Logo}}" alt="Avatar">
+            </div>
+            <div *ngIf="config.langName != 'ar'" class="image" style="position: absolute;top: 0px;left: 1.5em;">
+              <img class="avatar" src="{{config.companyImageURL+parent?.Logo}}" alt="Avatar">
+            </div>
+            <h3 text-captilize class="company_name" style="font-size: 1.4em;color: white;text-align: center; margin-left: 15px;margin-right: 15px;">{{ parent?.CompnayName | translate }}</h3>
+            <p text-wrap text-captilize style="
+            
+            word-wrap: break-word;
+            white-space: normal;
+            color: white;
+            text-align: center;
+                 margin-left: 15px;
+                       margin-right: 15px;
+         ">{{ parent?.BusinesTitle | translate }}</p>
+            <!-- </ion-item> -->
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-row style="    position: absolute;
+      bottom: 9px;
+      width: 100%;">
+        <ion-col>
+          <button *ngIf="config.langName == 'ar'" detail-none ion-button icon-right clear small class="padding-btn" (click)="openRatingPage()"
+            float-right>
+            <ion-icon name="star" class="custom-icon"></ion-icon>
+          </button>
+          <button *ngIf="config.langName != 'ar'" detail-none ion-button icon-left clear small class="padding-btn" (click)="openRatingPage()"
+            float-left>
+            <ion-icon name="star" class="custom-icon"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col *ngIf="!shared.isCompany">
+          <button detail-none ion-button clear small class="padding-btn">
+            <ion-icon name="eye" class="custom-icon"></ion-icon>
+            <div style="color: white; padding: 0px 5px;"> {{totalView}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button *ngIf="config.langName == 'ar'" detail-none ion-button icon-right clear small class="padding-btn" (click)="openSharePage()"
+            float-left>
+            <ion-icon name="share" class="custom-icon"></ion-icon>
+          </button>
+          <button *ngIf="config.langName != 'ar'" detail-none ion-button icon-left clear small class="padding-btn" (click)="openSharePage()"
+            float-right>
+            <ion-icon name="share" class="custom-icon"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
+  <div class="main-content">
+    <ion-grid *ngIf="productView=='grid'">
+      <ion-col *ngFor="let p of products" col-6>
+        <product [data]="p" [company]="parent" [type]="'normal'"></product>
+      </ion-col>
+
+      <ion-col *ngIf="products?.length==0" col-12 class="animated fadeIn">
+        <h6 text-center>{{'No Products Found!'|translate}}</h6>
+      </ion-col>
+    </ion-grid>
+
+    <ion-list class="list-view" *ngIf="productView=='list'">
+      <span *ngFor="let p of products">
+        <product [data]="p" [type]="'list'" [company]="company"></product>
+      </span>
+    </ion-list>
+  </div>
+
+  <ion-fab bottom right>
+
+    <!-- <svg-icon *ngIf="!shared.isCompany" src="assets/request-fab.svg" (click)="openRequestPage()"></svg-icon> -->
+    <!-- <svg-icon *ngIf="shared.isCompany&&(shared.customerData.customers_id==parent?.CompanyId||shared.customerData.customers_id==companyId)" src="assets/add.svg" (click)="openAddProduct()"></svg-icon> -->
+
+    <button *ngIf="!shared.isCompany" src="assets/request.png" (click)="openRequestPage()">
+    </button>
+    <button *ngIf="shared.isCompany" src="assets/request.png" (click)="openAddProduct()">
+    </button>
+
+  </ion-fab>
+</ion-content>
+
+
+<ion-nav #content></ion-nav>

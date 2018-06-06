@@ -1,0 +1,72 @@
+<ion-header>
+
+  <ion-navbar color="light">
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title text-center>
+      <div class="categories-title">Main</div>
+    </ion-title>
+
+    <ion-buttons end>
+      <button detail-none ion-button icon-only (click)="openSearch()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="page-home5">
+  <ion-card *ngFor="let c of categories" (click)="openSubCategories(c)" class="animated flipInX">
+    <img src="{{config.backEndURL+c.Banner}}" />
+    <div class="categories-title">{{c.CategoryEnglish}}</div>
+    <div class="categories-subtitle">{{c.Total}} {{'Company'| translate }} </div>
+
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-slides #slider *ngIf="ads && ads.length" autoplay="{{autoplay}}" pager="false" dir="{{shared.dir}}" loop="true" speed="3000"
+    (ionSlideWillChange)="slideChanged()">
+    <ion-slide *ngFor="let slide of ads" style="height: 80px">
+      <div class="image" (click)="OpenUrl(slide.Url)">
+        <img src="{{config.backEndURL+slide.Banner}}" width="100%" height="100%" />
+      </div>
+
+    </ion-slide>
+
+  </ion-slides>
+  <ion-segment color="dark" mode="md">
+    <ion-segment-button value="HomePage" (click)="openHome()">
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/home.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+    </ion-segment-button>
+    <ion-segment-button value="CategoriesPage" (click)="openTop()">
+
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/grouping.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+    </ion-segment-button>
+    <!-- {{ 'Categories' | translate }} -->
+    <ion-segment-button value="ProductsPage" *ngIf="shared.isCompany" (click)="openPublish()">
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/publish.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+    </ion-segment-button>
+    <ion-segment-button value="ProductsPage" *ngIf="!shared.isCompany" (click)="openRequestPage()">
+      <div class="svg-container">
+        <object type="image/svg+xml" data="assets/img/request-user.svg" width="100%" height="100%" class="svg-content">
+        </object>
+      </div>
+
+    </ion-segment-button>
+
+  </ion-segment>
+
+</ion-footer>

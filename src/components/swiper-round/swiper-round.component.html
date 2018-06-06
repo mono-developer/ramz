@@ -1,0 +1,11 @@
+<div class="slide-box">
+
+  <swiper [config]="config" style="height: 100%;" class="swiper-container">
+    <div class="swiper-wrapper" *ngIf="pk.length > 0">
+      <div class="swiper-slide" *ngFor="let item of pk">
+        <img src="{{configURL}}{{item.Logo}}" alt="" (click)="onClickImage(item)">
+      </div>
+    </div>
+    <div class="swiper-scrollbar"></div>
+  </swiper>
+</div>

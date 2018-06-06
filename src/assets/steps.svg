@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="687px" height="690px" viewBox="0 0 687 690" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="camera-alt">
+            <circle id="Oval" fill="#000000" cx="342.7" cy="662.7" r="11.2"></circle>
+            <path d="M332.5,627 L326.2,634 L315,634 C311.15,634 308,637.15 308,641 L308,683 C308,686.85 311.15,690 315,690 L371,690 C374.85,690 378,686.85 378,683 L378,641 C378,637.15 374.85,634 371,634 L359.8,634 L353.5,627 L332.5,627 L332.5,627 Z M343,679.5 C333.2,679.5 325.5,671.8 325.5,662 C325.5,652.2 333.2,644.5 343,644.5 C352.8,644.5 360.5,652.2 360.5,662 C360.5,671.8 352.8,679.5 343,679.5 L343,679.5 Z" id="Shape" fill="#000000"></path>
+            <g id="Steps">
+                <g id="Step-1---Address" fill="#C5C5C5">
+                    <polygon id="Polygon-5" points="74.5 75 85 85.5 74.5 96 64 85.5"></polygon>
+                    <text id="ADDRESS" font-family=".SFNSDisplay, .SF NS Display" font-size="24" font-weight="normal" letter-spacing="6">
+                        <tspan x="0.85546875" y="23">ADDRESS</tspan>
+                    </text>
+                </g>
+                <g id="Step-2---Banner" transform="translate(199.000000, 0.000000)">
+                    <polygon id="Polygon-6" fill="#BDBDBD" points="64.5 75 75 85.5 64.5 96 54 85.5"></polygon>
+                    <text id="BANNER" opacity="0.3" font-family=".SFNSDisplay, .SF NS Display" font-size="24" font-weight="normal" letter-spacing="6" fill="#454545">
+                        <tspan x="0.5234375" y="23">BANNER</tspan>
+                    </text>
+                </g>
+                <g id="Step-3---Review" transform="translate(417.000000, 0.000000)">
+                    <polygon id="Polygon-6" fill="#EE5856" points="44.5 75 55 85.5 44.5 96 34 85.5"></polygon>
+                    <text id="LOGO" font-family=".SFNSDisplay, .SF NS Display" font-size="24" font-weight="normal" letter-spacing="6" fill="#454545">
+                        <tspan x="0.322265625" y="23">LOGO</tspan>
+                    </text>
+                </g>
+                <g id="Step-3---Review" transform="translate(617.000000, 0.000000)">
+                    <polygon id="Polygon-6" fill="#CCCCCC" points="34.5 75 45 85.5 34.5 96 24 85.5"></polygon>
+                    <text id="MAP" opacity="0.3" font-family=".SFNSDisplay, .SF NS Display" font-size="24" font-weight="normal" letter-spacing="6" fill="#454545">
+                        <tspan x="0.998046875" y="23">MAP</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

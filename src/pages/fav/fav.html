@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <button detail-none ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-center>
+            {{'Favorites'| translate }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list inset>
+
+        <ion-row *ngFor="let r of requests; let i = index;" text-wrap class="borderBottom">
+            <ion-item col-8 (click)="openProductDetails(r)">
+                <h2 text-wrap>{{r.ItemTitle}}</h2>
+                <ion-note text-wrap (click)="openProductDetails(r)">{{r.ItemDescription}}</ion-note>
+                <!-- <ion-icon style="zoom:1.2;" [name]="'heart'" item-end></ion-icon> -->
+
+            </ion-item>
+            <ion-item col-4>
+                <button ion-button icon-only clear small item-end (click)="removeFav('product', r, i)">
+                    <ion-icon style="zoom:1.2;" [name]="'heart'" item-end></ion-icon>
+                </button>
+            </ion-item>
+        </ion-row>
+
+        <ion-row *ngFor="let c of companies; let i = index;" text-wrap class="borderBottom">
+            <ion-item col-12 (click)="openCompanyDetails(c.CompanyId)">
+                <h2 text-wrap>{{c.CompnayName}}</h2>
+                <ion-note text-wrap>{{c.CategoryEnglish}}</ion-note>
+                <!-- <ion-icon style="zoom:1.2;" [name]="'heart'" item-end></ion-icon> -->
+                <button ion-button icon-only clear small item-end (click)="removeFav('company', c, i)">
+                    <ion-icon style="zoom:1.2;" [name]="'heart'" item-end></ion-icon>
+                </button>
+            </ion-item>
+        </ion-row>
+
+
+    </ion-list>
+</ion-content>

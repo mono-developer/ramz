@@ -1,0 +1,263 @@
+<ion-header>
+
+  <ion-navbar>
+    <button detail-none ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      {{'Profile'| translate }}
+    </ion-title>
+    <ion-buttons end>
+      <button detail-none *ngIf="!shared.isActive" ion-button icon-only (click)="shared.logOut()">
+        <ion-icon ios="ios-log-out" md="ios-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <div padding>
+    <ion-segment [(ngModel)]="profileSelected" color="primary">
+      <ion-segment-button value="address" (ionChange)="segmentChanged()">
+        {{'Address' |translate}}
+      </ion-segment-button>
+      <ion-segment-button value="banner" [disabled]="isNotData" (ionChange)="segmentChanged()">
+        {{'Banner' |translate}}
+      </ion-segment-button>
+      <ion-segment-button value="logo" [disabled]="isNotData || isNotBanner" (ionChange)="segmentChanged()">
+        {{'Logo' |translate}}
+      </ion-segment-button>
+      <ion-segment-button value="map" [disabled]="isNotData || isNotBanner || isNotLogo" (ionChange)="segmentChanged()">
+        {{'Map' |translate}}
+      </ion-segment-button>
+    </ion-segment>
+
+  </div>
+</ion-header>
+
+<ion-content class="page-company-account" no-padding>
+  <ion-grid style="height: 100%;" [ngSwitch]="profileSelected" no-padding>
+    <ion-list *ngSwitchCase="'address'" no-padding>
+      <form #addressForm="ngForm" (ngSubmit)="updateProfileAddress()">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col col-12 col-sm class="tt_view">
+              <ion-item>
+                <ion-label color="dark" floating>{{'Owner Name'|translate}}</ion-label>
+                <ion-input type="text" name="customers_owner_name" [(ngModel)]="companyAccountData.customers_owner_name" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <!-- <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                 <ion-label color="dark"  floating>{{'Brand Name'|translate}}</ion-label>
+                <ion-input type="text" name="customers_busines_title" [(ngModel)]="companyAccountData.customers_busines_title" required></ion-input>
+              </ion-item>
+            </ion-col> -->
+          </ion-row>
+
+          <ion-row>
+            <!-- <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                 <ion-label color="dark"  floating>{{'Owner Name'|translate}}</ion-label>
+                <ion-input type="text" name="customers_owner_name" [(ngModel)]="companyAccountData.customers_owner_name" required></ion-input>
+              </ion-item>
+            </ion-col> -->
+            <ion-col col-12 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Brand Name'|translate}}</ion-label>
+                <ion-input type="text" name="customers_busines_title" [(ngModel)]="companyAccountData.customers_busines_title" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Compnay Name'|translate}}</ion-label>
+                <ion-input type="text" name="customers_firstname" [(ngModel)]="companyAccountData.customers_firstname" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Bussiness Category'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="companyAccountData.customers_category_id"
+                  name="customers_category_id" required>
+                  <ion-option *ngFor="let cat of allCategories" [selected]="cat.CategoryId === companyAccountData.customers_category_id" [value]="cat.CategoryId">{{langId==1?cat.CategoryArabic:cat.CategoryEnglish}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Commercial Record'|translate}}</ion-label>
+                <ion-input type="text" name="customers_commercial_record" [(ngModel)]="companyAccountData.customers_commercial_record" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Address Line'|translate}}</ion-label>
+                <ion-input type="text" name="customers_address" [(ngModel)]="companyAccountData.customers_address" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Governorate'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="companyAccountData.customers_governorate"
+                  name="customers_governorate" (ionChange)="getCities(companyAccountData.customers_governorate)" required>
+                  <ion-option *ngFor="let governorate of governorates" [selected]="governorate.GovernorateId === companyAccountData.customers_governorate"
+                    [value]="governorate.GovernorateId">{{langId==1?governorate.GovernorateArabic:governorate.GovernorateEnglish}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'City'|translate}}</ion-label>
+                <ion-select [okText]="'okText' | translate" [cancelText]="'cancelText' | translate" [(ngModel)]="companyAccountData.customers_city"
+                  name="customers_city" required>
+                  <ion-option *ngFor="let city of cities" [value]="city.CityId">{{langId==1?city.CityArabic:city.CityEnglish}}</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Email Address'|translate}}</ion-label>
+                <ion-input type="email" email name="customers_email_address" [(ngModel)]="companyAccountData.customers_email_address" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Mobile'|translate}}</ion-label>
+                <ion-input type="number" maxlength="8" name="customers_telephone" [(ngModel)]="companyAccountData.customers_telephone" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Twitter'|translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="companyAccountData.customers_twitter" name="customers_twitter" required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col width-50 col-6 col-sm>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Instagram'|translate}}</ion-label>
+                <ion-input type="text" name="customers_instagram" [(ngModel)]="companyAccountData.customers_instagram" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Facebook'|translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="companyAccountData.customers_faceBook" name="customers_faceBook" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="dark" floating>{{'Bussiness Description'|translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="companyAccountData.customers_description" name="customers_description" required></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+        <ion-footer class="footer-btn" *ngIf="isKeyboardHide">
+          <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+            <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+              color="dark" type="submit" [disabled]="!addressForm.form.valid">{{'Save and continue'|translate}}</button>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'banner'" no-padding>
+
+      <form #bannerForm="ngForm" (ngSubmit)="uploadPhoto(tempBannnerPhoto, 'banner')">
+        <ion-row>
+          <ion-col center text-center class="tt_view">
+            <p text-wrap>{{'Banner Size'|translate}}</p>
+            <ion-note>
+              {{'The banner size has to be'|translate}}
+            </ion-note>
+            <p text-wrap class="redColor">{{'700 X 500 px'|translate}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="photo">
+              <div class="image">
+                <img src="{{profileBanner}}">
+              </div>
+              <div class="scan">
+                <ion-icon name="camera" (click)="takePhoto(profileBanner, tempBannnerPhoto,'banner')"></ion-icon>
+              </div>
+              <div class="upload">
+                <ion-icon name="image" (click)="selectPhoto(profileBanner, tempBannnerPhoto,'banner')"></ion-icon>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-footer *ngIf="isKeyboardHide">
+          <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+            <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+              color="dark" type="submit" [disabled]="!bannerForm.form.valid  || tempBannnerPhoto==null">{{'Save and continue'|translate}}</button>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'logo'">
+      <form #logoForm="ngForm" (ngSubmit)="uploadPhoto(tempLogoPhoto, 'logo')">
+        <ion-row>
+          <ion-col center text-center class="tt_view">
+            <p text-wrap>{{'Logo Size'|translate}}</p>
+            <ion-note>
+              {{'The logo size has to be'|translate}}
+            </ion-note>
+            <p text-wrap class="redColor">{{'500 X 500 px'|translate}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <div class="photo">
+              <div class="image">
+                <img class="avatar" src="{{profileLogo}}">
+              </div>
+              <div class="scan">
+                <ion-icon name="camera" (click)="takePhoto(profileLogo, tempLogoPhoto,'logo')"></ion-icon>
+              </div>
+              <div class="upload">
+                <ion-icon name="image" (click)="selectPhoto(profileLogo, tempLogoPhoto,'logo')"></ion-icon>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-footer *ngIf="isKeyboardHide">
+          <ion-toolbar color="dark" style="background-color: black !important;padding:0px !important">
+            <button detail-none ion-button full style="position: absolute;left:0px ;bottom: 0px; width: 100%;height: 100%;margin: 0px 0px !important;"
+              color="dark" type="submit" [disabled]="!logoForm.form.valid  || tempLogoPhoto==null">{{'Save and continue'|translate}}</button>
+          </ion-toolbar>
+        </ion-footer>
+      </form>
+
+    </ion-list>
+
+    <ion-grid *ngSwitchCase="'map'" style="height: 100%;" no-padding class="tt_view">
+
+      <page-map style="height: 100%;"></page-map>
+
+
+    </ion-grid>
+  </ion-grid>
+
+</ion-content>
