@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SharedDataProvider } from '../../providers/shared-data/shared-data';
@@ -18,6 +15,7 @@ import { Home5Page } from '../home5/home5';
 import { normalizeURL } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Keyboard } from '@ionic-native/keyboard';
+import { Storage } from "@ionic/storage";
 // import { FormControl } from '@angular/forms';
 
 @Component({
@@ -75,7 +73,8 @@ export class MyAccountPage {
     private events: Events,
     public app: App,
     private menu: MenuController,
-    private keyboard: Keyboard
+    private keyboard: Keyboard,
+    public storage: Storage
   ) {
 
     keyboard.onKeyboardShow().subscribe(() => {
@@ -124,14 +123,31 @@ export class MyAccountPage {
     console.log('account_data', this.myAccountData);
   }
 
+  ionViewWillEnter() {
+
+    let userInfo: any = this.storage.get('loginInfo');
+    let userData = userInfo.__zone_symbol__value;
+    console.log('userInfo', userData);
+
+    this.myAccountData.customers_firstname = this.shared.customerData.customers_firstname;
+    this.myAccountData.customers_lastname = this.shared.customerData.customers_lastname;
+    this.myAccountData.customers_email_address = this.shared.customerData.customers_email_address;
+    this.profilePicture = this.config.url + this.config.userUploads + this.shared.customerData.customers_picture;
+    this.myAccountData.customers_old_picture = this.shared.customerData.customers_picture;
+    this.myAccountData.customers_telephone = this.shared.customerData.customers_telephone;
+    this.myAccountData.customers_governorate = this.shared.customerData.customers_governorate;
+    this.myAccountData.customers_city = this.shared.customerData.customers_city;
+    this.myAccountData.customers_age = this.shared.customerData.customers_age;
+    this.myAccountData.gender = userData.gender;
+    this.isNotData = (this.shared.customerData.customers_firstname == "" || this.shared.customerData.customers_email_address == "" || this.shared.customerData.customers_telephone == "" || this.shared.customerData.customers_age == "");
+    this.isNotPicture = (this.shared.customerData.customers_picture == "" || this.shared.customerData.customers_picture == "default.png");
+  }
+
   getCustomersInterests(userId) {
     if (this.customersInterests && this.customersInterests > 0) {
-      // already loaded data
-      // console.log("already loaded data customersInterests: " + JSON.stringify(this.customersInterests))
       return Promise.resolve(this.customersInterests);
     }
     return new Promise(resolve => {
-      // console.log("NOT loaded data customersInterests: " + JSON.stringify(this.customersInterests))
       this.http.get(this.config.url + this.config.getCustomerInterests + userId, { headers: this.headers })
         .map(res => res.json())
         .subscribe(data => {
@@ -150,7 +166,6 @@ export class MyAccountPage {
       .map(res => res.json())
       .subscribe(data => {
         this.cities = data.Result;
-        // return Promise.resolve(data.Result);
       });
   }
 
@@ -159,11 +174,9 @@ export class MyAccountPage {
       this.customersInterests.push({ "InterestCategoryId": cat.CategoryId });
     else
       this.customersInterests = this.customersInterests.filter(sc => sc.InterestCategoryId != cat.CategoryId);
-    // console.log("customersInterests2: "+JSON.stringify(this.customersInterests))
   }
 
   isCategorySelected(catId) {
-    // if (this.customersInterests && this.customersInterests.filter(ci => ci.InterestCategoryId == catId && ci.Status == 1).length > 0) {
     if (this.customersInterests && this.customersInterests.filter(ci => ci.InterestCategoryId == catId).length > 0) {
       return true;
     } else {
@@ -180,7 +193,7 @@ export class MyAccountPage {
   //function updating user information
   updateInfo = function () {
     this.loading.show();
-    console.log(this.myAccountData);
+    console.log(this.myAccountData, this.config.url + this.config.updateCustomerInfo);
     this.myAccountData.customers_id = this.shared.customerData.customers_id;
     let formData: FormData = new FormData();
     formData.append('cityid', this.myAccountData.customers_city);
@@ -191,19 +204,13 @@ export class MyAccountPage {
     formData.append('gender', this.myAccountData.gender);
     formData.append('userid', this.myAccountData.customers_id);
 
-
     this.http.post(this.config.url + this.config.updateCustomerInfo, formData, { headers: this.headers }).map(res => res.json()).subscribe(data => {
-      console.log(formData);
       this.loading.hide();
       if (data.Status == true) {
-        //   document.getElementById("updateForm").reset();
-        // this.alert.show(data.Message);
-        console.log('1');
+        console.log(data);
         this.shared.customerData.customers_firstname = this.myAccountData.customers_firstname;
         this.shared.customerData.customers_lastname = this.myAccountData.customers_lastname;
         this.shared.customerData.customers_telephone = this.myAccountData.customers_telephone;
-        // this.shared.customerData.customers_picture = data.data[0].customers_picture;
-        // console.log('>>>>> '+data.Result)
         if (data.Result != null && data.Result.Photo != null)
           this.shared.customerData.customers_picture = data.Result.Photo;
 
@@ -216,7 +223,6 @@ export class MyAccountPage {
         this.myAccountData.currentPassword = "";
         this.myAccountData.customers_password = "";
         this.shared.showToast('Successfully updated profile data.', 2000, 'bottom', 'success', () => {
-          //console.log('Dismissed toast');
           this.profileSelected = 'photo';
           this.isNotData = false;
         });
@@ -224,6 +230,7 @@ export class MyAccountPage {
     }
       , error => {
         this.loading.hide();
+        console.log('error', error);
         var errMsg = '';
         if (error.status == 400) {
           if (this.langId && this.langId == 1)
@@ -237,18 +244,13 @@ export class MyAccountPage {
           }
         } else
           errMsg = 'Error while Updating!';
-
-        // this.errorMessage = errMsg
-        // this.alert.show(errMsg);
         this.shared.showToast(errMsg, 2000, 'bottom', 'error', () => {
-          //console.log('Dismissed toast');
         });
       });
     // }
   }
 
   updateInterests = function () {
-    // console.log("customersInterests3: "+JSON.stringify(this.customersInterests))
     if (this.customersInterests && this.customersInterests.length > 0) {
       let customers_id = this.shared.customerData.customers_id;
 
@@ -262,8 +264,6 @@ export class MyAccountPage {
       let formData: FormData = new FormData();
       formData.append('userid', customers_id);
       formData.append('categories', ids);
-
-      console.log(this.formData);
 
       this.http.post(this.config.url + this.config.updateCustomerInterests, formData, { headers: this.headers })
         .map(res => res.json()).subscribe(data => {
@@ -279,7 +279,6 @@ export class MyAccountPage {
         }
           , error => {
             this.loading.hide();
-            // isError = true;
             var errMsg = '';
             if (error.status == 400) {
               if (this.langId && this.langId == 1)
@@ -292,17 +291,13 @@ export class MyAccountPage {
               errMsg = 'Error while Updating!';
 
             this.shared.showToast('Sorry, Error while Updating user interests!', 2000, 'bottom', 'error', () => {
-              //console.log('Dismissed toast');
             });
           });
     } else {
       this.shared.showToast('Sorry, You should select at least one interest!', 2000, 'bottom', 'error', () => {
-        //console.log('Dismissed toast');
       });
     }
   }
-
-
 
   openCamera() {
     const options: CameraOptions = {
@@ -322,8 +317,7 @@ export class MyAccountPage {
         this.tempPhoto = imageData;
         this.profilePicture = normalizeURL(imageData);
       }, (err) => {
-        this.alert.show(err)
-        // console.log("Error at openCamera to get Picture: " + err)
+        this.alert.show(err);
       });
     });
   }
@@ -342,12 +336,8 @@ export class MyAccountPage {
     }).then(imageData => {
       this.tempPhoto = imageData;
       this.profilePicture = normalizeURL(imageData);
-
-      //this.uploadPhoto(imageData);
     }, error => {
-      this.alert.show(error)
-      // this.error = JSON.stringify(error);
-      // console.log("Error at takePhoto to get Picture: " + error)
+      this.alert.show(error);
     });
   }
 
@@ -367,12 +357,8 @@ export class MyAccountPage {
     }).then(imageData => {
       this.tempPhoto = imageData;
       this.profilePicture = normalizeURL(imageData);
-
-      // this.uploadPhoto(imageData);
     }, error => {
       this.alert.show(error)
-      // this.error = JSON.stringify(error);
-      // console.log("Error at SelectPhoto to get Picture: " + error)
     });
   }
 
@@ -400,8 +386,8 @@ export class MyAccountPage {
         let res = JSON.parse(data.response);
         if (res.Status == true) {
           this.shared.showToast('Successfully updated profile photo.', 2000, 'bottom', 'success', () => {
-            this.shared.customerData.customers_picture = res.Result[0].Photo;
             this.profileSelected = 'interests';
+            this.shared.customerData.customers_picture = res.Result[0].Photo;
             this.isNotPicture = false;
           });
         }
@@ -420,23 +406,7 @@ export class MyAccountPage {
       });
   }
 
-  ionViewWillEnter() {
-    console.log(this.myAccountData, this.shared);
-    this.myAccountData.customers_firstname = this.shared.customerData.customers_firstname;
-    this.myAccountData.customers_lastname = this.shared.customerData.customers_lastname;
-    this.myAccountData.customers_email_address = this.shared.customerData.customers_email_address;
-    this.profilePicture = this.config.url + this.config.userUploads + this.shared.customerData.customers_picture;
-    this.myAccountData.customers_old_picture = this.shared.customerData.customers_picture;
-    this.myAccountData.customers_telephone = this.shared.customerData.customers_telephone;
-    this.myAccountData.customers_governorate = this.shared.customerData.customers_governorate;
-    this.myAccountData.customers_city = this.shared.customerData.customers_city;
-    this.myAccountData.customers_age = this.shared.customerData.customers_age;
-    this.myAccountData.gender = this.shared.customerData.gender;
-    this.isNotData = (this.shared.customerData.customers_firstname == "" || this.shared.customerData.customers_email_address == "" || this.shared.customerData.customers_telephone == "" || this.shared.customerData.customers_age == "");
-    this.isNotPicture = (this.shared.customerData.customers_picture == "" || this.shared.customerData.customers_picture == "default.png");
 
-
-  }
   openSearch() {
     this.navCtrl.push(SearchPage);
   }
@@ -447,7 +417,5 @@ export class MyAccountPage {
 
 
   private backButtonFunc(): void {
-    // this.openCart();
-    // do something 
   }
 }

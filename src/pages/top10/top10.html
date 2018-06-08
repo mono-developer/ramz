@@ -13,17 +13,18 @@
   <h1 style="color:#c4c4d1; margin: 35px;text-align: center;">{{'The top 10'| translate }}
     <span style="color:#EE6464">{{months[currentDate.getMonth()] +' '+ currentDate.getFullYear()}}</span>
   </h1>
-  <div *ngFor="let item of top10s" class="swiper-view">
-    <!-- <p>{{item.key}}</p> -->
-    <!-- <div *ngFor=" let pk1 of item.value[ 'A'] "> -->
-    <div *ngIf="item.value[ 'A'].length> 0">
-      <swiper-round [pk]="item.value['A']" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
+  <div class="swiper-view">
+    <!-- <p>{{topPK4Key}}</p> -->
+    <div *ngFor="let pk of topPK4">
+      <swiper-round [pk]="pk.value" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
     </div>
-    <div *ngIf="item.value['B'].length > 0">
-      <swiper-round [pk]="item.value['B']" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
-    </div>
+  </div>
 
-    <!-- </div> -->
+  <div class="swiper-view" *ngFor="let item of topPK">
+    <!-- <p>{{item.key}}</p> -->
+    <div *ngIf="item.value.length">
+      <swiper-round [pk]="item.value" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
+    </div>
   </div>
 
   <!-- <ion-list>

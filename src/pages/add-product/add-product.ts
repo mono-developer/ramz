@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component } from "@angular/core";
 import {
   ViewController,
@@ -86,9 +83,9 @@ export class AddProductPage {
   }
   toDataURL(url, callback) {
     var xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
       var reader = new FileReader();
-      reader.onloadend = function() {
+      reader.onloadend = function () {
         callback(reader.result);
       };
       reader.readAsDataURL(xhr.response);
@@ -102,7 +99,7 @@ export class AddProductPage {
     return new Promise((resolve, reject) => {
       let img = new Image();
       img.crossOrigin = "Anonymous";
-      img.onload = function() {
+      img.onload = function () {
         let canvas = <HTMLCanvasElement>document.createElement("CANVAS"),
           ctx = canvas.getContext("2d"),
           dataURL;
@@ -210,7 +207,7 @@ export class AddProductPage {
           this.loading.hide();
           var errMsg = "";
           errMsg = "add product failed.";
-          this.shared.showToast(errMsg, 2000, "bottom", "error", () => {});
+          this.shared.showToast(errMsg, 2000, "bottom", "error", () => { });
         }
       );
   }
@@ -251,7 +248,7 @@ export class AddProductPage {
           this.loading.hide();
           var errMsg = "";
           errMsg = "add product failed.";
-          this.shared.showToast(errMsg, 2000, "bottom", "error", () => {});
+          this.shared.showToast(errMsg, 2000, "bottom", "error", () => { });
         }
       );
   }

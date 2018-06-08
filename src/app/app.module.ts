@@ -1,9 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
-// Version: 1.0
-
 if (localStorage.langId == undefined) {
   localStorage.langId = "20";
   localStorage.langName = "en";

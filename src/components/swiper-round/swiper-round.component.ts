@@ -26,11 +26,9 @@ export class SwiperRoundComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("aaaaaaaaa", this.pk);
-    console.log('nbhbbbb', this.configURL);
+    console.log("pk", this.pk);
   }
   onClickImage(item) {
     this.swiperClick.emit(item);
-
   }
 }

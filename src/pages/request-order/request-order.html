@@ -44,20 +44,21 @@
       </ion-row>
 
       <ion-row>
-        <ion-col width-60 col-7 col-sm>
-          <ion-label color="dark">{{'Quantity'|translate}}
+        <ion-col width-60 col-7 col-sm style="padding: 5px 0;">
+          <ion-label color="dark" style="margin-right: 0;">{{'Quantity'|translate}}
             <span>&#40;{{'optional' | translate }}&#41;</span>
           </ion-label>
-          <ion-item>
+          <ion-item style="padding-left: 0;">
             <input type="button" value="-" (click)="minus()">
-            <input type="text" style="text-align: center;padding: 5px;" disabled size="5" [(ngModel)]="data.qty" name="count" [value]="count">
+            <input type="text" style="text-align: center;padding: 5px; opacity: 1; color: #000" disabled size="5" [(ngModel)]="data.qty"
+              name="count" [value]="count">
             <input type="button" value="+" (click)="plus()">
           </ion-item>
         </ion-col>
 
         <ion-col width-40 col-5 col-sm style="background-color: transparent;">
           <p text-wrap>{{'Submission Date'| translate }}</p>
-          <ion-item col-12 (click)="showDateTimePicker()">
+          <ion-item col-12 (click)="showDateTimePicker()" style="padding-left: 0;">
             <ion-buttons detail-none>
               {{date}}
               <button detail-none icon-left block large style="background-color: #fff;">

@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { SharedDataProvider } from '../../providers/shared-data/shared-data';
@@ -44,15 +41,15 @@ export class AboutUsPage {
       modal.present();
     }
   }
-  openSite(){
+  openSite() {
     this.loading.autoHide(2000);
-    this.iab.create(this.config.siteUrl,"blank");
+    this.iab.create(this.config.siteUrl, "blank");
   }
 
-openSearch() {
+  openSearch() {
     this.navCtrl.push(SearchPage);
-}
-ionViewWillEnter() {
-  // s
-}
+  }
+  ionViewWillEnter() {
+    // s
+  }
 }

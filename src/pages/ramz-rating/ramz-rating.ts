@@ -112,13 +112,13 @@ export class RamzRatingPage {
           this.shared.showToast(data.Message, 2000, 'bottom', 'success', () => {
           });
         } else {
-          this.shared.showToast("Ramz give rating failed!", 3000, 'bottom', 'error', () => {
+          this.shared.showToast("Rmz give rating failed!", 3000, 'bottom', 'error', () => {
           });
         }
       }
         , err => {
           this.loading.hide();
-          var errMsg = 'Ramz give rating failed.';
+          var errMsg = 'Rmz give rating failed.';
           this.shared.showToast(errMsg, 3000, 'bottom', 'error', () => {
           });
 

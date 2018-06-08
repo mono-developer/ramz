@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { ConfigProvider } from '../../providers/config/config';
@@ -17,6 +14,9 @@ import { ProductsPage } from '../products/products';
 export class Top10Page {
 
   top10s = [];
+  topPK4: any;
+  topPK: any = [];
+  topPK4Key: string;
   direction: string;
   currentDate = new Date();
   months = [];
@@ -39,18 +39,18 @@ export class Top10Page {
       this.months = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"];
     }
+  }
+
+  ionViewDidEnter() {
     this.getTop10();
   }
 
   transform(obj): any {
     let keys = [];
-
     Object.keys(obj).forEach(key => {
-      // console.log(key); //key      
-      // console.log(obj[key]); //value    
+      // console.log(key); //key 
       keys.push({ 'key': key, 'value': obj[key] });
     });
-    // console.log("keys: " + JSON.stringify(keys));
     return keys;
   }
 
@@ -62,6 +62,9 @@ export class Top10Page {
         this.loading.hide();
         if (data.Status == true) {
           this.top10s = this.transform(data.Result);
+          this.topPK = this.top10s.slice(1);
+          this.topPK4 = this.transform(this.top10s[0].value);
+          this.topPK4Key = this.top10s[0].key;
           this.configURL = this.config.companyImageURL;
         } else {
           this.top10s = [];
@@ -81,7 +84,6 @@ export class Top10Page {
         });
       });
   }
-
 
   openCompany(event) {
     this.navCtrl.push(ProductsPage, { 'companyId': event.CompanyId });

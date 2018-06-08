@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SharedDataProvider } from '../../providers/shared-data/shared-data';

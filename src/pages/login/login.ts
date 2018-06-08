@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component, ViewChild } from '@angular/core';
 import { ViewController, ModalController, ToastController, NavController, Nav, Events, App } from 'ionic-angular';
 import { SignUpPage } from '../sign-up/sign-up';
@@ -68,10 +65,9 @@ export class LoginPage {
         data => {
           this.loading.hide();
           if (data.Status == true) {
-            // this.notifyMessage = data.Message;
             let userData = data.Result;
-            //{"UserId":"1","CityId":"10","Name":"Ahmed Allam","Mobile":"12345688","Email":"mohammed.fathi.allam@gmail.com","Age":"25", "Photo":"1517845083er2.jpg","DeviceType":"1","Token":"cVr9CWJQaPc:APA91bGkkH2aZQgCsgNXUyvRIQH36k82kCHonFqC3VPHoDugXCgcHLhDLZ412oPdo82f6uOzE5J_2Yek6SsCKyW432P3JYSi6VYWGUKy9Rsot30kWyqwvag9c5EwHdWEcyyYpjKQw4fn","Notification":"1"} 
             var customerData;
+            console.log(customerData);
             if (!this.shared.isCompany) {
               customerData = {
                 customers_id: userData.UserId,
@@ -147,23 +143,16 @@ export class LoginPage {
                   this.events.publish('user:changed', Date.now());
                 }
               } else {
+                console.log(customerData);
+                this.storage.set('loginInfo', customerData)
                 this.events.publish('user:changed', Date.now());
               }
-
             }
-            // this.navCtrl.setRoot('Home5Page');    
-            // this.shared.showToast(this.langId && this.langId == 1 ? data.Arabic : data.Message, 3000, 'top', 'success', () => {
-            //   //console.log('Dismissed toast');
-
-            // });
             this.dismiss();
           }
           if (data.Status == false) {
             this.storage.set('isLogged', false);
-            //this.errorMessage = this.langId && this.langId == 1 ? data.Arabic : data.Message;
-            // this.errorMessage = "Sign in failed! Wrong password or username.";
             this.shared.showToast(this.langId && this.langId == 1 ? data.Arabic : data.Message, 3000, 'top', 'error', () => {
-              //console.log('Dismissed toast');
             });
           }
         },
@@ -172,26 +161,18 @@ export class LoginPage {
           this.storage.set('isLogged', 'false');
           var errMsg;
           if (err.status == 401)
-            // errMsg = "Sign in failed! Wrong password or username.";
             errMsg = this.langId && this.langId == 1 ? JSON.parse(err._body).Arabic : JSON.parse(err._body).Message;
           else if (err.status == 400) {
             let error = JSON.parse(err._body);
             errMsg = (error.Message.email && error.Message.password) ? error.Message.email + '   ' + error.Message.password : (error.Message.email) ? error.Message.email : (error.Message.password) ? error.Message.password : this.langId && this.langId == 1 && error.Arabic ? error.Arabic : error.Message;
           } else
             errMsg = 'Server error!';
-
-          // this.errorMessage = errMsg
-          //console.log("errMsg : ",errMsg )
           this.shared.showToast(errMsg, 3000, 'top', 'error', () => {
-            //console.log('Dismissed toast');
           });
         })
-
   }
 
   refreshDeviceToken() {
-
-
   }
   openSignUpPage() {
     let modal = this.modalCtrl.create(SignUpPage);

@@ -92,7 +92,7 @@
         "ionicons": "3.0.0",
         "jquery": "^3.3.1",
         "jquery-ui": "^1.12.1",
-        "mx.ferreyra.callnumber": "0.0.2",
+        "mx.ferreyra.callnumber": "~0.0.2",
         "ng-lazyload-image": "^3.3.5",
         "prod": "1.0.1",
         "rxjs": "5.5.2",
@@ -125,7 +125,6 @@
             "cordova-plugin-x-toast": {},
             "cordova-plugin-app-version": {},
             "cordova-plugin-statusbar": {},
-            "mx.ferreyra.callnumber": {},
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
             },
@@ -136,7 +135,8 @@
             "cordova-plugin-datepicker": {},
             "call-number": {},
             "cordova-plugin-file": {},
-            "cordova-plugin-file-transfer": {}
+            "cordova-plugin-file-transfer": {},
+            "mx.ferreyra.callnumber": {}
         },
         "platforms": [
             "browser",

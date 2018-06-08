@@ -45,20 +45,21 @@
         </object>
       </div>
     </ion-segment-button>
-    <ion-segment-button value="CategoriesPage" (click)="openTop()">
 
+    <ion-segment-button value="CategoriesPage" (click)="openTop()">
       <div class="svg-container">
         <object type="image/svg+xml" data="assets/img/grouping.svg" width="100%" height="100%" class="svg-content">
         </object>
       </div>
     </ion-segment-button>
-    <!-- {{ 'Categories' | translate }} -->
+
     <ion-segment-button value="ProductsPage" *ngIf="shared.isCompany" (click)="openPublish()">
       <div class="svg-container">
         <object type="image/svg+xml" data="assets/img/publish.svg" width="100%" height="100%" class="svg-content">
         </object>
       </div>
     </ion-segment-button>
+
     <ion-segment-button value="ProductsPage" *ngIf="!shared.isCompany" (click)="openRequestPage()">
       <div class="svg-container">
         <object type="image/svg+xml" data="assets/img/request-user.svg" width="100%" height="100%" class="svg-content">

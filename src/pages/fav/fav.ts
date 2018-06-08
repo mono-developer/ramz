@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import {
   Component,
   ChangeDetectorRef,
@@ -40,7 +37,7 @@ export class FavPage {
     public storage: Storage,
     public navCtrl: NavController,
     public viewCtrl: ViewController
-  ) {}
+  ) { }
 
   ionViewWillEnter() {
     this.requests = [];
@@ -76,14 +73,14 @@ export class FavPage {
       this.storage
         .get(
           `company ${obj.CategoryId} ${obj.CompanyId} ${obj.AgeFrom} ${
-            obj.AgeTo
+          obj.AgeTo
           }`
         )
         .then(value => {
           if (value && JSON.stringify(value) != null) {
             this.storage.remove(
               `company ${obj.CategoryId} ${obj.objId} ${obj.AgeFrom} ${
-                obj.AgeTo
+              obj.AgeTo
               }`
             );
             this.companies.splice(index, 1);
