@@ -39,6 +39,7 @@
         "@ionic-native/local-notifications": "4.6.0",
         "@ionic-native/location-accuracy": "^4.7.0",
         "@ionic-native/network": "4.6.0",
+        "@ionic-native/onesignal": "^4.7.0",
         "@ionic-native/paypal": "^4.7.0",
         "@ionic-native/push": "^4.6.0",
         "@ionic-native/screen-orientation": "^4.7.0",
@@ -58,9 +59,9 @@
         "call-number": "^1.0.1",
         "card.io.cordova.mobilesdk": "^2.1.0",
         "com.paypal.cordova.mobilesdk": "^3.5.0",
-        "cordova-android": "7.0.0",
+        "cordova-android": "^7.0.0",
         "cordova-browser": "5.0.3",
-        "cordova-ios": "4.5.4",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-add-swift-support": "^1.7.2",
         "cordova-plugin-app-version": "^0.1.9",
         "cordova-plugin-camera": "^3.0.0",
@@ -139,9 +140,9 @@
             "mx.ferreyra.callnumber": {}
         },
         "platforms": [
+            "android",
             "browser",
-            "ios",
-            "android"
+            "ios"
         ]
     }
 }

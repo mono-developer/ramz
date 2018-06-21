@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component } from "@angular/core";
 import {
   ViewController,
@@ -42,7 +39,8 @@ export class NewOrderPage {
     categoryid: "",
     mobile: "",
     comments: " ",
-    companyid: ""
+    companyid: "",
+    qty: 1
   };
   date: any = new Date();
   companyInfo: CompanyInfo;
@@ -135,6 +133,8 @@ export class NewOrderPage {
     formData.append("deliveryday", this.data.deliveryday);
     formData.append("deliverymonth", this.data.deliverymonth);
     formData.append("mobile", this.data.mobile);
+    formData.append("comments", this.data.comments);
+    formData.append("qty", this.data.qty.toString());
 
     if (this.companyInfo) {
       formData.append("companyid", this.data.companyid);

@@ -71,6 +71,8 @@ import { Network } from "@ionic-native/network";
 import { SubCategories6Page } from "../pages/sub-categories6/sub-categories6";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { AppVersion } from "@ionic-native/app-version";
+// import { OneSignal } from '@ionic-native/onesignal';
+
 import {
   HTTP_INTERCEPTORS,
   HttpClientModule,

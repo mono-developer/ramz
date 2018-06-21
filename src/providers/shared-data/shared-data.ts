@@ -1,7 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
 import { Injectable } from "@angular/core";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import "rxjs/add/operator/map";
@@ -106,6 +102,7 @@ export class SharedDataProvider {
     });
 
     this.storage.get("customerData").then(data => {
+      console.log('sharedData', data);
       if (data != null)
         this.customerData = {
           customers_id: data.customers_id,
@@ -189,6 +186,7 @@ export class SharedDataProvider {
   login(data) {
     this.customerData = data;
     this.storage.set("customerData", this.customerData);
+    console.log('custoemr', this.customerData);
   }
 
   logOut() {

@@ -112,6 +112,7 @@ export class MyApp {
       // let status bar overlay webview
       this.statusBar.overlaysWebView(false);
       this.splashScreen.hide();
+
     });
 
     // this.handleBackButton();

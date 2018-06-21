@@ -1,31 +1,31 @@
 {
   "project_info": {
-    "project_number": "83118923742",
-    "firebase_url": "https://ramz-4abcd.firebaseio.com",
-    "project_id": "ramz-4abcd",
-    "storage_bucket": "ramz-4abcd.appspot.com"
+    "project_number": "438640307977",
+    "firebase_url": "https://ramz-3fc9b.firebaseio.com",
+    "project_id": "ramz-3fc9b",
+    "storage_bucket": "ramz-3fc9b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:83118923742:android:be945184daecd534",
+        "mobilesdk_app_id": "1:438640307977:android:2b18704157e8a87a",
         "android_client_info": {
-          "package_name": "com.ramz"
+          "package_name": "com.rmz.albawareg"
         }
       },
       "oauth_client": [
         {
-          "client_id": "83118923742-llrt9orvb1op2c1ocvu91i6ckvqbnfbo.apps.googleusercontent.com",
+          "client_id": "438640307977-i1kcf74eff448kb6imfd1us9ftbgmov1.apps.googleusercontent.com",
           "client_type": 3
         },
         {
-          "client_id": "83118923742-llrt9orvb1op2c1ocvu91i6ckvqbnfbo.apps.googleusercontent.com",
+          "client_id": "438640307977-i1kcf74eff448kb6imfd1us9ftbgmov1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCE2xQRhAhsLeBYazrbQYc2CX_lIU-1wKw"
+          "current_key": "AIzaSyAs6ytUqOcENy_gVXYVKDkcEaqUjUs3c90"
         }
       ],
       "services": {

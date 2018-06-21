@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component, ViewChild } from "@angular/core";
 import {
   NavController,
@@ -71,7 +68,7 @@ export class ProductsPage {
     public actionSheet: ActionSheetController
   ) {
     if (shared.dir == "rtl") this.side = "left";
-
+    console.log(this.shared);
     this.parent = this.navParams.get("subCategory");
     this.companyId = this.navParams.get("companyId");
     // if (this.navParams.get('id') != undefined) this.selectedTab = this.categoryId = this.navParams.get('CompanyModel');

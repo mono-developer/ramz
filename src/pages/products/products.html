@@ -57,15 +57,7 @@
               <img class="avatar" src="{{config.companyImageURL+parent?.Logo}}" alt="Avatar">
             </div>
             <h3 text-captilize class="company_name" style="font-size: 1.4em;color: white;text-align: center; margin-left: 15px;margin-right: 15px;">{{ parent?.CompnayName | translate }}</h3>
-            <p text-wrap text-captilize style="
-            
-            word-wrap: break-word;
-            white-space: normal;
-            color: white;
-            text-align: center;
-                 margin-left: 15px;
-                       margin-right: 15px;
-         ">{{ parent?.BusinesTitle | translate }}</p>
+            <p text-wrap text-captilize style="word-wrap: break-word; white-space: normal; color: white; text-align: center; margin-left: 15px; margin-right: 15px;">{{ parent?.BusinesTitle | translate }}</p>
             <!-- </ion-item> -->
           </ion-col>
         </ion-row>
@@ -128,7 +120,8 @@
 
     <button *ngIf="!shared.isCompany" src="assets/request.png" (click)="openRequestPage()">
     </button>
-    <button *ngIf="shared.isCompany" src="assets/request.png" (click)="openAddProduct()">
+    <button *ngIf="shared.isCompany&&(shared.customerData.customers_id==parent?.CompanyId||shared.customerData.customers_id==companyId)"
+      src="assets/request.png" (click)="openAddProduct()">
     </button>
 
   </ion-fab>

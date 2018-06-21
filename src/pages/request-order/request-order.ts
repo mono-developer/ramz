@@ -1,7 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
 import { Component } from "@angular/core";
 import {
   ViewController,
@@ -68,6 +64,7 @@ export class RequestOrderPage {
     public platform: Platform,
     translate: TranslateService
   ) {
+    console.log(this.config.companyImageURL);
     let date = new Date();
     this.date = date.getDate().toString() + "/" + (date.getMonth() + 1).toString() + "/" + date.getFullYear().toString();
     this.data.deliveryday = date.getDate().toString();

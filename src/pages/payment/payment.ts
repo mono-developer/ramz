@@ -1,7 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
 import { Component, ChangeDetectorRef, ViewChild } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { SharedDataProvider } from "../../providers/shared-data/shared-data";
@@ -240,7 +236,7 @@ export class PaymentPage {
 
   //============================================================================================
   //function updating user information
-  updateInfo = function() {
+  updateInfo = function () {
     this.loading.show();
     this.creditCard.companyid = this.shared.customerData.customers_id;
     var splitted = this.creditCard.date.split("-", 2);
@@ -257,8 +253,8 @@ export class PaymentPage {
     formData.append(
       "description",
       this.shared.customerData.customers_firstname +
-        "|" +
-        this.shared.customerData.customers_email_address
+      "|" +
+      this.shared.customerData.customers_email_address
     );
     formData.append("duedate", this.pkgDetails.DueDate);
     this.http
@@ -291,8 +287,8 @@ export class PaymentPage {
             this.http2
               .get(
                 this.config.url +
-                  this.config.checkCompanyIsActive +
-                  this.shared.customerData.customers_id,
+                this.config.checkCompanyIsActive +
+                this.shared.customerData.customers_id,
                 { headers: this.headers }
               )
               .map(res => res.json())
@@ -338,7 +334,7 @@ export class PaymentPage {
       buttons: [
         {
           text: "OK",
-          handler: () => {}
+          handler: () => { }
         }
       ]
     });
@@ -408,8 +404,8 @@ export class PaymentPage {
             this.http2
               .get(
                 this.config.url +
-                  this.config.checkCompanyIsActive +
-                  this.shared.customerData.customers_id,
+                this.config.checkCompanyIsActive +
+                this.shared.customerData.customers_id,
                 { headers: this.headers }
               )
               .map(res => res.json())

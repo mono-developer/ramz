@@ -28,6 +28,9 @@ export class SharePage {
 
   customerType = this.shared.customerType;
   companyInfo;
+  iosLink: string = "https://itunes.apple.com/us/app/rmz/id1397821220";
+  androidLink: string = "https://play.google.com/store/apps/details?id=com.rmz.albawareg";
+  shareURL: string;
   private headers = new Headers({ 'X-API-KEY': this.config.apiKeyValue });
   constructor(public navCtrl: NavController,
     public viewCtrl: ViewController,
@@ -44,119 +47,68 @@ export class SharePage {
     private callNumber: CallNumber
   ) {
     this.companyInfo = this.navParams.get('companyInfo');
+    if (this.plt.is('ios')) {
+      this.shareURL = this.iosLink;
+    } else {
+      this.shareURL = this.androidLink;
+    }
+
   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad GreatingPage');
   }
 
-
   close() {
     this.viewCtrl.dismiss();
   }
 
   facebookShare() {
+    console.log(this.companyInfo.FaceBook, this.config.companyImageURL + this.companyInfo.Logo, this.shareURL);
     this.loading.autoHide(2000);
-    // if (this.plt.is('ios')) {
     this.socialSharing.shareViaFacebook(
-      this.companyInfo.FaceBook,
-      this.config.companyImageURL + this.companyInfo.Logo,
-      ""
+      "",
+      "",
+      this.shareURL
     ).then(() => {
     }).catch(() => {
-
     });
-    // } else if (this.plt.is('android')) {
-    //   console.log(this.companyInfo.FaceBook);
-    //   this.appVersion.getPackageName().then((val) => {
-    //     this.socialSharing.shareViaFacebook(
-    //       this.companyInfo.FaceBook,
-    //       this.config.companyImageURL + this.companyInfo.Logo,
-    //       ""
-    //     ).then(() => {
-
-    //     }).catch(() => {
-    //     });
-    //   });
-    // }
   }
 
   twitterShare() {
     this.loading.autoHide(2000);
-    // if (this.plt.is('ios')) {
     this.socialSharing.shareViaTwitter(
       this.companyInfo.Twitter,
       this.config.companyImageURL + this.companyInfo.Logo,
-      ""
+      this.shareURL
     ).then(() => {
     }).catch(() => {
-
     });
-    // } else if (this.plt.is('android')) {
-    //   console.log(this.companyInfo.Twitter);
-    //   this.appVersion.getPackageName().then((val) => {
-    //     this.socialSharing.shareViaTwitter(
-    //       this.companyInfo.Twitter,
-    //       this.config.companyImageURL + this.companyInfo.Logo,
-    //       ""
-    //     ).then(() => {
-
-    //     }).catch(() => {
-    //     });
-    //   });
-    // }
   }
 
   instagramShare() {
     this.loading.autoHide(2000);
-    // if (this.plt.is('ios')) {
     this.socialSharing.shareViaInstagram(
       this.companyInfo.Instagram,
-      ""
+      this.shareURL
     ).then(() => {
     }).catch(() => {
-
     });
-    // } else if (this.plt.is('android')) {
-    //   console.log(this.companyInfo.Instagram);
-    //   this.appVersion.getPackageName().then((val) => {
-    //     this.socialSharing.shareViaInstagram(
-    //       this.companyInfo.Instagram,
-    //       this.config.companyImageURL + this.companyInfo.Logo
-    //     ).then(() => {
-    //     }).catch(() => {
-    //     });
-    //   });
-    // }
   }
+
   openLocationPage(c) {
     this.navCtrl.push(MapPage, { 'companyInfo': c });
   }
+
   whatsShare() {
     this.loading.autoHide(2000);
-    // if (this.plt.is('ios')) {
-
     this.socialSharing.shareViaWhatsApp(
       this.companyInfo.FaceBook,
       this.config.companyImageURL + this.companyInfo.Logo,
-      ""
+      this.shareURL
     ).then(() => {
     }).catch(() => {
-
     });
-    // } else if (this.plt.is('android')) {
-
-    //   this.appVersion.getPackageName().then((val) => {
-    //     this.socialSharing.shareViaWhatsApp(
-    //       this.companyInfo.FaceBook,
-    //       "",
-
-    //       ""
-    //     ).then(() => {
-    //     }).catch(() => {
-    //     });
-    //   });
-    // }
   }
 
   callPhone(telephoneNumber: string) {

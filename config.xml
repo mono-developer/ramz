@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ramz" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.rmz.albawareg" version="0.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Rmz</name>
     <description>Rmz</description>
     <author email="m.tarek.badr@gmail.com" href="http://ramz.com/">Dev  Team</author>
@@ -80,6 +80,9 @@
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <engine name="android" spec="^7.0.0" />
+    <engine name="browser" spec="5.0.3" />
+    <engine name="ios" spec="^4.4.0" />
     <plugin name="call-number" spec="^1.0.1" />
     <plugin name="com.paypal.cordova.mobilesdk" spec="^3.5.0" />
     <plugin name="cordova-plugin-add-swift-support" spec="^1.7.2" />
@@ -109,7 +112,4 @@
     <plugin name="cordova-plugin-x-toast" spec="^2.6.2" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
-    <engine name="browser" spec="5.0.3" />
-    <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="7.0.0" />
 </widget>

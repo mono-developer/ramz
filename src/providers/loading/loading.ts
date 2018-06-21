@@ -1,7 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
 import { Injectable } from '@angular/core';
 import { LoadingController } from 'ionic-angular';
 import { ConfigProvider } from '../config/config';
@@ -15,7 +11,7 @@ export class LoadingProvider {
     public config: ConfigProvider
     // private oneSignal: OneSignal
   ) {
-      
+
   }
 
   show() {

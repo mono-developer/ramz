@@ -1,7 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
 import { Injectable } from '@angular/core';
 import { SharedDataProvider } from '../shared-data/shared-data';
 import { AlertProvider } from '../alert/alert';

@@ -1,7 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import { SharedDataProvider } from '../../providers/shared-data/shared-data';
@@ -17,9 +13,9 @@ export class RefundPolicyPage {
 
   constructor(
     public viewCtrl: ViewController,
-  
+
     public sharedData: SharedDataProvider,
-    translate: TranslateService,) {
+    translate: TranslateService, ) {
   }
 
   dismiss() {

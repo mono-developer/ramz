@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component } from '@angular/core';
 import { ViewController, IonicPage, NavParams, ToastController } from 'ionic-angular';
 import { SharedDataProvider } from '../../providers/shared-data/shared-data';

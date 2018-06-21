@@ -1,7 +1,4 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
+
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, InfiniteScroll } from 'ionic-angular';
 import { Http } from '@angular/http';
@@ -72,7 +69,7 @@ export class NewsPage {
         data.data.forEach((value, index) => {
           this.categories.push(value);
         });
-       // console.log(data.data.length);
+        // console.log(data.data.length);
         this.getCategories();
       }
       if (data.data.length < 9) {// if we get less than 10 products then infinite scroll will de disabled
@@ -126,14 +123,14 @@ export class NewsPage {
   };
   openPostsPage(name, id) {
     this.loading.autoHide(500);
-    this.navCtrl.push(NewsListPage, { 'name':name,'id':id });
+    this.navCtrl.push(NewsListPage, { 'name': name, 'id': id });
   }
 
-  
+
   openSearch() {
     this.navCtrl.push(SearchPage);
   }
   ionViewWillEnter() {
-    
+
   }
 }

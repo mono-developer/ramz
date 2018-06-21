@@ -61,6 +61,7 @@ export class Top10Page {
       .subscribe(data => {
         this.loading.hide();
         if (data.Status == true) {
+          console.log(data);
           this.top10s = this.transform(data.Result);
           this.topPK = this.top10s.slice(1);
           this.topPK4 = this.transform(this.top10s[0].value);

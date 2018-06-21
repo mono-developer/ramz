@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>83118923742-5s94cehrho0mu7egg74n9moqq756p9ls.apps.googleusercontent.com</string>
+	<string>438640307977-nra413fi3m3s2v78hm24cn25prbuntqe.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.83118923742-5s94cehrho0mu7egg74n9moqq756p9ls</string>
+	<string>com.googleusercontent.apps.438640307977-nra413fi3m3s2v78hm24cn25prbuntqe</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA04diwmpmzEUJRmmNhYXgwYH8q08XoHhg</string>
+	<string>AIzaSyD-ya6vlh7GWYqFolNX7-SG16LsFHCm8Pw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>83118923742</string>
+	<string>438640307977</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ramz</string>
+	<string>com.rmz.albawareg</string>
 	<key>PROJECT_ID</key>
-	<string>ramz-4abcd</string>
+	<string>ramz-3fc9b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ramz-4abcd.appspot.com</string>
+	<string>ramz-3fc9b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:83118923742:ios:be945184daecd534</string>
+	<string>1:438640307977:ios:2b18704157e8a87a</string>
 	<key>DATABASE_URL</key>
-	<string>https://ramz-4abcd.firebaseio.com</string>
+	<string>https://ramz-3fc9b.firebaseio.com</string>
 </dict>
 </plist>

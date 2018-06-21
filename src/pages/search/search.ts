@@ -1,7 +1,3 @@
-// Project Name: Ramz
-// Project URI: http://Ramz.com
-// Author: VectorCoder Team
-// Author URI: http://vectorcoder.com/
 import { Component, ViewChild } from "@angular/core";
 import { NavController, NavParams, ToastController } from "ionic-angular";
 import { ConfigProvider } from "../../providers/config/config";
@@ -64,7 +60,7 @@ export class SearchPage {
     );
   }
 
-  onChangeKeyword = function(e) {
+  onChangeKeyword = function (e) {
     // let val = e.target.value;
     // console.log("Input val: " + val);
     // console.log("search: " + this.search);

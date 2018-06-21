@@ -16,7 +16,10 @@
   <div class="swiper-view">
     <!-- <p>{{topPK4Key}}</p> -->
     <div *ngFor="let pk of topPK4">
-      <swiper-round [pk]="pk.value" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
+      <div *ngIf="pk.length">
+        <swiper-round [pk]="pk.value" [configURL]="configURL" (swiperClick)="openCompany($event)"></swiper-round>
+      </div>
+
     </div>
   </div>
 

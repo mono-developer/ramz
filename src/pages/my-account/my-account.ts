@@ -48,6 +48,7 @@ export class MyAccountPage {
   governorates: any;
   customersInterests: any = [];
   cities: any;
+  customerData: any;
   private transfer: FileTransferObject = this.fileTransfer.create();
   // selectedCategories: any[] = [];
   allCategories: any[] = this.shared.allCategories;
@@ -76,6 +77,11 @@ export class MyAccountPage {
     private keyboard: Keyboard,
     public storage: Storage
   ) {
+
+    this.storage.get("customerData").then(data => {
+      this.customerData = data;
+      console.log(this.customerData);
+    });
 
     keyboard.onKeyboardShow().subscribe(() => {
       this.isKeyboardHide = false;
@@ -106,7 +112,9 @@ export class MyAccountPage {
     }, err => console.log(err));
     if (this.shared.customerData.customers_id && (!this.customersInterests || this.customersInterests.length == 0)) {
       this.getCustomersInterests(this.shared.customerData.customers_id).then(data => {
+        console.log(this.shared);
         this.shared.customerData.customers_interests = data;
+        this.shared.customerData.gender = this.customerData.gender;
         this.shared.login(this.shared.customerData);
 
         this.allCategories.forEach(cat => {
@@ -119,28 +127,26 @@ export class MyAccountPage {
         });
       }, err => console.log(err));
     }
-
-    console.log('account_data', this.myAccountData);
   }
 
   ionViewWillEnter() {
 
-    let userInfo: any = this.storage.get('loginInfo');
-    let userData = userInfo.__zone_symbol__value;
-    console.log('userInfo', userData);
+    this.storage.get("customerData").then(data => {
+      this.customerData = data;
+      this.myAccountData.customers_firstname = this.shared.customerData.customers_firstname;
+      this.myAccountData.customers_lastname = this.shared.customerData.customers_lastname;
+      this.myAccountData.customers_email_address = this.shared.customerData.customers_email_address;
+      this.profilePicture = this.config.url + this.config.userUploads + this.shared.customerData.customers_picture;
+      this.myAccountData.customers_old_picture = this.shared.customerData.customers_picture;
+      this.myAccountData.customers_telephone = this.shared.customerData.customers_telephone;
+      this.myAccountData.customers_governorate = this.shared.customerData.customers_governorate;
+      this.myAccountData.customers_city = this.shared.customerData.customers_city;
+      this.myAccountData.customers_age = this.shared.customerData.customers_age;
+      this.myAccountData.gender = this.customerData.gender;
+      this.isNotData = (this.shared.customerData.customers_firstname == "" || this.shared.customerData.customers_email_address == "" || this.shared.customerData.customers_telephone == "" || this.shared.customerData.customers_age == "");
+      this.isNotPicture = (this.shared.customerData.customers_picture == "" || this.shared.customerData.customers_picture == "default.png");
+    });
 
-    this.myAccountData.customers_firstname = this.shared.customerData.customers_firstname;
-    this.myAccountData.customers_lastname = this.shared.customerData.customers_lastname;
-    this.myAccountData.customers_email_address = this.shared.customerData.customers_email_address;
-    this.profilePicture = this.config.url + this.config.userUploads + this.shared.customerData.customers_picture;
-    this.myAccountData.customers_old_picture = this.shared.customerData.customers_picture;
-    this.myAccountData.customers_telephone = this.shared.customerData.customers_telephone;
-    this.myAccountData.customers_governorate = this.shared.customerData.customers_governorate;
-    this.myAccountData.customers_city = this.shared.customerData.customers_city;
-    this.myAccountData.customers_age = this.shared.customerData.customers_age;
-    this.myAccountData.gender = userData.gender;
-    this.isNotData = (this.shared.customerData.customers_firstname == "" || this.shared.customerData.customers_email_address == "" || this.shared.customerData.customers_telephone == "" || this.shared.customerData.customers_age == "");
-    this.isNotPicture = (this.shared.customerData.customers_picture == "" || this.shared.customerData.customers_picture == "default.png");
   }
 
   getCustomersInterests(userId) {
@@ -193,7 +199,6 @@ export class MyAccountPage {
   //function updating user information
   updateInfo = function () {
     this.loading.show();
-    console.log(this.myAccountData, this.config.url + this.config.updateCustomerInfo);
     this.myAccountData.customers_id = this.shared.customerData.customers_id;
     let formData: FormData = new FormData();
     formData.append('cityid', this.myAccountData.customers_city);
@@ -207,10 +212,11 @@ export class MyAccountPage {
     this.http.post(this.config.url + this.config.updateCustomerInfo, formData, { headers: this.headers }).map(res => res.json()).subscribe(data => {
       this.loading.hide();
       if (data.Status == true) {
-        console.log(data);
         this.shared.customerData.customers_firstname = this.myAccountData.customers_firstname;
         this.shared.customerData.customers_lastname = this.myAccountData.customers_lastname;
         this.shared.customerData.customers_telephone = this.myAccountData.customers_telephone;
+        this.shared.customerData.gender = this.myAccountData.gender;
+
         if (data.Result != null && data.Result.Photo != null)
           this.shared.customerData.customers_picture = data.Result.Photo;
 
